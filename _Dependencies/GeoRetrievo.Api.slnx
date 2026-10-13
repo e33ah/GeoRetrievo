@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../GeoRetrievo.Api/GeoRetrievo.Api.csproj" />
+  <Project Path="../GeoRetrievo.Test/GeoRetrievo.Test.csproj" />
+</Solution>

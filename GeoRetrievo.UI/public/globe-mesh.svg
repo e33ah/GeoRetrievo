@@ -1,0 +1,19 @@
+<svg width="1600" height="1600" viewBox="0 0 1600 1600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="0.9">
+    <path d="M200 1100C420 930 620 900 820 1020C1010 1130 1220 1160 1400 1080" stroke="white" stroke-width="4" stroke-linecap="round"/>
+    <path d="M120 640C270 500 470 440 640 470C840 510 1010 580 1180 560C1310 540 1430 470 1520 390" stroke="white" stroke-width="4" stroke-linecap="round"/>
+    <path d="M180 900C330 760 470 660 620 620C790 575 980 610 1130 720C1240 800 1340 900 1500 950" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <path d="M260 390C440 300 620 270 800 300C970 330 1140 410 1300 520" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <path d="M400 280L400 1320" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+    <path d="M800 180L800 1420" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+    <path d="M1200 240L1200 1360" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+    <path d="M160 500L1440 500" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+    <path d="M210 980L1390 980" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+    <path d="M150 1220L1450 1220" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+    <circle cx="400" cy="500" r="160" stroke="white" stroke-width="2.5"/>
+    <circle cx="800" cy="640" r="220" stroke="white" stroke-width="2.5"/>
+    <circle cx="1200" cy="540" r="180" stroke="white" stroke-width="2.5"/>
+    <circle cx="610" cy="1080" r="200" stroke="white" stroke-width="2.5"/>
+    <circle cx="1040" cy="980" r="180" stroke="white" stroke-width="2.5"/>
+  </g>
+</svg>

@@ -1,0 +1,6 @@
+@GeoRetrievo.Api_HostAddress = http://localhost:5294
+
+GET {{GeoRetrievo.Api_HostAddress}}/countries/
+Accept: application/json
+
+###

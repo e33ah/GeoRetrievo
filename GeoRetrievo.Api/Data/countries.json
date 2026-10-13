@@ -1,0 +1,2823 @@
+[
+  {
+    "name": "Afghanistan",
+    "code": "AF",
+    "capital": "Kabul",
+    "region": "Asia",
+    "population": 26023100,
+    "currencyCode": "AFN",
+    "currencySymbol": "AFN",
+    "languages": [
+      "ps",
+      "uz",
+      "tk"
+    ],
+    "callingCode": "93",
+    "flag": "https://flagcdn.com/w320/af.png"
+  },
+  {
+    "name": "Albania",
+    "code": "AL",
+    "capital": "Tirana",
+    "region": "Europe",
+    "population": 2895947,
+    "currencyCode": "ALL",
+    "currencySymbol": "ALL",
+    "languages": [
+      "sq"
+    ],
+    "callingCode": "355",
+    "flag": "https://flagcdn.com/w320/al.png"
+  },
+  {
+    "name": "Algeria",
+    "code": "DZ",
+    "capital": "Algiers",
+    "region": "Africa",
+    "population": 38700000,
+    "currencyCode": "DZD",
+    "currencySymbol": "DZD",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "213",
+    "flag": "https://flagcdn.com/w320/dz.png"
+  },
+  {
+    "name": "Angola",
+    "code": "AO",
+    "capital": "Luanda",
+    "region": "Africa",
+    "population": 24383301,
+    "currencyCode": "AOA",
+    "currencySymbol": "AOA",
+    "languages": [
+      "pt"
+    ],
+    "callingCode": "244",
+    "flag": "https://flagcdn.com/w320/ao.png"
+  },
+  {
+    "name": "Anguilla",
+    "code": "AI",
+    "capital": "The Valley",
+    "region": "Americas",
+    "population": 13452,
+    "currencyCode": "XCD",
+    "currencySymbol": "EC$",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "1264",
+    "flag": "https://flagcdn.com/w320/ai.png"
+  },
+  {
+    "name": "Antigua and Barbuda",
+    "code": "AG",
+    "capital": "Saint John's",
+    "region": "Americas",
+    "population": 86295,
+    "currencyCode": "XCD",
+    "currencySymbol": "EC$",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "1268",
+    "flag": "https://flagcdn.com/w320/ag.png"
+  },
+  {
+    "name": "Argentina",
+    "code": "AR",
+    "capital": "Buenos Aires",
+    "region": "Americas",
+    "population": 42669500,
+    "currencyCode": "ARS",
+    "currencySymbol": "ARS",
+    "languages": [
+      "es",
+      "gn"
+    ],
+    "callingCode": "54",
+    "flag": "https://flagcdn.com/w320/ar.png"
+  },
+  {
+    "name": "Armenia",
+    "code": "AM",
+    "capital": "Yerevan",
+    "region": "Asia",
+    "population": 3009800,
+    "currencyCode": "AMD",
+    "currencySymbol": "AMD",
+    "languages": [
+      "hy",
+      "ru"
+    ],
+    "callingCode": "374",
+    "flag": "https://flagcdn.com/w320/am.png"
+  },
+  {
+    "name": "Australia",
+    "code": "AU",
+    "capital": "Canberra",
+    "region": "Oceania",
+    "population": 23696900,
+    "currencyCode": "AUD",
+    "currencySymbol": "A$",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "61",
+    "flag": "https://flagcdn.com/w320/au.png"
+  },
+  {
+    "name": "Austria",
+    "code": "AT",
+    "capital": "Vienna",
+    "region": "Europe",
+    "population": 8527230,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "de"
+    ],
+    "callingCode": "43",
+    "flag": "https://flagcdn.com/w320/at.png"
+  },
+  {
+    "name": "Azerbaijan",
+    "code": "AZ",
+    "capital": "Baku",
+    "region": "Asia",
+    "population": 9552500,
+    "currencyCode": "AZN",
+    "currencySymbol": "AZN",
+    "languages": [
+      "az",
+      "hy"
+    ],
+    "callingCode": "994",
+    "flag": "https://flagcdn.com/w320/az.png"
+  },
+  {
+    "name": "Bahrain",
+    "code": "BH",
+    "capital": "Manama",
+    "region": "Asia",
+    "population": 1316500,
+    "currencyCode": "BHD",
+    "currencySymbol": "BHD",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "973",
+    "flag": "https://flagcdn.com/w320/bh.png"
+  },
+  {
+    "name": "Bangladesh",
+    "code": "BD",
+    "capital": "Dhaka",
+    "region": "Asia",
+    "population": 157486000,
+    "currencyCode": "BDT",
+    "currencySymbol": "BDT",
+    "languages": [
+      "bn"
+    ],
+    "callingCode": "880",
+    "flag": "https://flagcdn.com/w320/bd.png"
+  },
+  {
+    "name": "Barbados",
+    "code": "BB",
+    "capital": "Bridgetown",
+    "region": "Americas",
+    "population": 285000,
+    "currencyCode": "BBD",
+    "currencySymbol": "BBD",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "1246",
+    "flag": "https://flagcdn.com/w320/bb.png"
+  },
+  {
+    "name": "Belarus",
+    "code": "BY",
+    "capital": "Minsk",
+    "region": "Europe",
+    "population": 9475100,
+    "currencyCode": "BYR",
+    "currencySymbol": "BYR",
+    "languages": [
+      "be",
+      "ru"
+    ],
+    "callingCode": "375",
+    "flag": "https://flagcdn.com/w320/by.png"
+  },
+  {
+    "name": "Belgium",
+    "code": "BE",
+    "capital": "Brussels",
+    "region": "Europe",
+    "population": 11225469,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "nl",
+      "fr",
+      "de"
+    ],
+    "callingCode": "32",
+    "flag": "https://flagcdn.com/w320/be.png"
+  },
+  {
+    "name": "Belize",
+    "code": "BZ",
+    "capital": "Belmopan",
+    "region": "Americas",
+    "population": 349728,
+    "currencyCode": "BZD",
+    "currencySymbol": "BZD",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "callingCode": "501",
+    "flag": "https://flagcdn.com/w320/bz.png"
+  },
+  {
+    "name": "Benin",
+    "code": "BJ",
+    "capital": "Porto-Novo",
+    "region": "Africa",
+    "population": 9988068,
+    "currencyCode": "XOF",
+    "currencySymbol": "F CFA",
+    "languages": [
+      "fr"
+    ],
+    "callingCode": "229",
+    "flag": "https://flagcdn.com/w320/bj.png"
+  },
+  {
+    "name": "Bhutan",
+    "code": "BT",
+    "capital": "Thimphu",
+    "region": "Asia",
+    "population": 755030,
+    "currencyCode": "BTN",
+    "currencySymbol": "BTN",
+    "languages": [
+      "dz"
+    ],
+    "callingCode": "975",
+    "flag": "https://flagcdn.com/w320/bt.png"
+  },
+  {
+    "name": "Bolivia",
+    "code": "BO",
+    "capital": "Sucre",
+    "region": "Americas",
+    "population": 10027254,
+    "currencyCode": "BOB",
+    "currencySymbol": "BOB",
+    "languages": [
+      "es",
+      "ay",
+      "qu"
+    ],
+    "callingCode": "591",
+    "flag": "https://flagcdn.com/w320/bo.png"
+  },
+  {
+    "name": "Bosnia and Herzegovina",
+    "code": "BA",
+    "capital": "Sarajevo",
+    "region": "Europe",
+    "population": 3791622,
+    "currencyCode": "BAM",
+    "currencySymbol": "BAM",
+    "languages": [
+      "bs",
+      "hr",
+      "sr"
+    ],
+    "callingCode": "387",
+    "flag": "https://flagcdn.com/w320/ba.png"
+  },
+  {
+    "name": "Botswana",
+    "code": "BW",
+    "capital": "Gaborone",
+    "region": "Africa",
+    "population": 2024904,
+    "currencyCode": "BWP",
+    "currencySymbol": "BWP",
+    "languages": [
+      "en",
+      "tn"
+    ],
+    "callingCode": "267",
+    "flag": "https://flagcdn.com/w320/bw.png"
+  },
+  {
+    "name": "Brazil",
+    "code": "BR",
+    "capital": "Brasília",
+    "region": "Americas",
+    "population": 203586000,
+    "currencyCode": "BRL",
+    "currencySymbol": "R$",
+    "languages": [
+      "pt"
+    ],
+    "callingCode": "55",
+    "flag": "https://flagcdn.com/w320/br.png"
+  },
+  {
+    "name": "Brunei",
+    "code": "BN",
+    "capital": "Bandar Seri Begawan",
+    "region": "Asia",
+    "population": 393372,
+    "currencyCode": "BND",
+    "currencySymbol": "BND",
+    "languages": [
+      "ms"
+    ],
+    "callingCode": "673",
+    "flag": "https://flagcdn.com/w320/bn.png"
+  },
+  {
+    "name": "Bulgaria",
+    "code": "BG",
+    "capital": "Sofia",
+    "region": "Europe",
+    "population": 7245677,
+    "currencyCode": "BGN",
+    "currencySymbol": "BGN",
+    "languages": [
+      "bg"
+    ],
+    "callingCode": "359",
+    "flag": "https://flagcdn.com/w320/bg.png"
+  },
+  {
+    "name": "Burkina Faso",
+    "code": "BF",
+    "capital": "Ouagadougou",
+    "region": "Africa",
+    "population": 17322796,
+    "currencyCode": "XOF",
+    "currencySymbol": "F CFA",
+    "languages": [
+      "fr",
+      "ff"
+    ],
+    "callingCode": "226",
+    "flag": "https://flagcdn.com/w320/bf.png"
+  },
+  {
+    "name": "Burundi",
+    "code": "BI",
+    "capital": "Bujumbura",
+    "region": "Africa",
+    "population": 9530434,
+    "currencyCode": "BIF",
+    "currencySymbol": "BIF",
+    "languages": [
+      "fr",
+      "rn"
+    ],
+    "callingCode": "257",
+    "flag": "https://flagcdn.com/w320/bi.png"
+  },
+  {
+    "name": "Cambodia",
+    "code": "KH",
+    "capital": "Phnom Penh",
+    "region": "Asia",
+    "population": 15184116,
+    "currencyCode": "KHR",
+    "currencySymbol": "KHR",
+    "languages": [
+      "km"
+    ],
+    "callingCode": "855",
+    "flag": "https://flagcdn.com/w320/kh.png"
+  },
+  {
+    "name": "Cameroon",
+    "code": "CM",
+    "capital": "Yaoundé",
+    "region": "Africa",
+    "population": 20386799,
+    "currencyCode": "XAF",
+    "currencySymbol": "FCFA",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "callingCode": "237",
+    "flag": "https://flagcdn.com/w320/cm.png"
+  },
+  {
+    "name": "Canada",
+    "code": "CA",
+    "capital": "Ottawa",
+    "region": "Americas",
+    "population": 35540419,
+    "currencyCode": "CAD",
+    "currencySymbol": "CA$",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "callingCode": "1",
+    "flag": "https://flagcdn.com/w320/ca.png"
+  },
+  {
+    "name": "Cape Verde",
+    "code": "CV",
+    "capital": "Praia",
+    "region": "Africa",
+    "population": 518467,
+    "currencyCode": "CVE",
+    "currencySymbol": "CVE",
+    "languages": [
+      "pt"
+    ],
+    "callingCode": "238",
+    "flag": "https://flagcdn.com/w320/cv.png"
+  },
+  {
+    "name": "Central African Republic",
+    "code": "CF",
+    "capital": "Bangui",
+    "region": "Africa",
+    "population": 4709000,
+    "currencyCode": "XAF",
+    "currencySymbol": "FCFA",
+    "languages": [
+      "fr",
+      "sg"
+    ],
+    "callingCode": "236",
+    "flag": "https://flagcdn.com/w320/cf.png"
+  },
+  {
+    "name": "Chad",
+    "code": "TD",
+    "capital": "N'Djamena",
+    "region": "Africa",
+    "population": 13211000,
+    "currencyCode": "XAF",
+    "currencySymbol": "FCFA",
+    "languages": [
+      "fr",
+      "ar"
+    ],
+    "callingCode": "235",
+    "flag": "https://flagcdn.com/w320/td.png"
+  },
+  {
+    "name": "Chile",
+    "code": "CL",
+    "capital": "Santiago",
+    "region": "Americas",
+    "population": 17819054,
+    "currencyCode": "CLF",
+    "currencySymbol": "CLF",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "56",
+    "flag": "https://flagcdn.com/w320/cl.png"
+  },
+  {
+    "name": "China",
+    "code": "CN",
+    "capital": "Beijing",
+    "region": "Asia",
+    "population": 1367110000,
+    "currencyCode": "CNY",
+    "currencySymbol": "CN¥",
+    "languages": [
+      "zh"
+    ],
+    "callingCode": "86",
+    "flag": "https://flagcdn.com/w320/cn.png"
+  },
+  {
+    "name": "Colombia",
+    "code": "CO",
+    "capital": "Bogotá",
+    "region": "Americas",
+    "population": 47907800,
+    "currencyCode": "COP",
+    "currencySymbol": "COP",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "57",
+    "flag": "https://flagcdn.com/w320/co.png"
+  },
+  {
+    "name": "Comoros",
+    "code": "KM",
+    "capital": "Moroni",
+    "region": "Africa",
+    "population": 763952,
+    "currencyCode": "KMF",
+    "currencySymbol": "KMF",
+    "languages": [
+      "ar",
+      "fr"
+    ],
+    "callingCode": "269",
+    "flag": "https://flagcdn.com/w320/km.png"
+  },
+  {
+    "name": "Costa Rica",
+    "code": "CR",
+    "capital": "San José",
+    "region": "Americas",
+    "population": 4713168,
+    "currencyCode": "CRC",
+    "currencySymbol": "CRC",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "506",
+    "flag": "https://flagcdn.com/w320/cr.png"
+  },
+  {
+    "name": "Croatia",
+    "code": "HR",
+    "capital": "Zagreb",
+    "region": "Europe",
+    "population": 4267558,
+    "currencyCode": "HRK",
+    "currencySymbol": "HRK",
+    "languages": [
+      "hr"
+    ],
+    "callingCode": "385",
+    "flag": "https://flagcdn.com/w320/hr.png"
+  },
+  {
+    "name": "Cuba",
+    "code": "CU",
+    "capital": "Havana",
+    "region": "Americas",
+    "population": 11210064,
+    "currencyCode": "CUC",
+    "currencySymbol": "CUC",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "53",
+    "flag": "https://flagcdn.com/w320/cu.png"
+  },
+  {
+    "name": "Cyprus",
+    "code": "CY",
+    "capital": "Nicosia",
+    "region": "Europe",
+    "population": 858000,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "el",
+      "tr",
+      "hy"
+    ],
+    "callingCode": "357",
+    "flag": "https://flagcdn.com/w320/cy.png"
+  },
+  {
+    "name": "Czech Republic",
+    "code": "CZ",
+    "capital": "Prague",
+    "region": "Europe",
+    "population": 10521600,
+    "currencyCode": "CZK",
+    "currencySymbol": "CZK",
+    "languages": [
+      "cs",
+      "sk"
+    ],
+    "callingCode": "420",
+    "flag": "https://flagcdn.com/w320/cz.png"
+  },
+  {
+    "name": "Democratic Republic of the Congo",
+    "code": "CD",
+    "capital": "Kinshasa",
+    "region": "Africa",
+    "population": 69360000,
+    "currencyCode": "CDF",
+    "currencySymbol": "CDF",
+    "languages": [
+      "fr",
+      "ln",
+      "kg",
+      "sw",
+      "lu"
+    ],
+    "callingCode": "243",
+    "flag": "https://flagcdn.com/w320/cd.png"
+  },
+  {
+    "name": "Denmark",
+    "code": "DK",
+    "capital": "Copenhagen",
+    "region": "Europe",
+    "population": 5655750,
+    "currencyCode": "DKK",
+    "currencySymbol": "DKK",
+    "languages": [
+      "da"
+    ],
+    "callingCode": "45",
+    "flag": "https://flagcdn.com/w320/dk.png"
+  },
+  {
+    "name": "Djibouti",
+    "code": "DJ",
+    "capital": "Djibouti",
+    "region": "Africa",
+    "population": 886000,
+    "currencyCode": "DJF",
+    "currencySymbol": "DJF",
+    "languages": [
+      "fr",
+      "ar"
+    ],
+    "callingCode": "253",
+    "flag": "https://flagcdn.com/w320/dj.png"
+  },
+  {
+    "name": "Dominica",
+    "code": "DM",
+    "capital": "Roseau",
+    "region": "Americas",
+    "population": 71293,
+    "currencyCode": "XCD",
+    "currencySymbol": "EC$",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "1767",
+    "flag": "https://flagcdn.com/w320/dm.png"
+  },
+  {
+    "name": "Dominican Republic",
+    "code": "DO",
+    "capital": "Santo Domingo",
+    "region": "Americas",
+    "population": 10378267,
+    "currencyCode": "DOP",
+    "currencySymbol": "DOP",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "1809",
+    "flag": "https://flagcdn.com/w320/do.png"
+  },
+  {
+    "name": "East Timor",
+    "code": "TL",
+    "capital": "Dili",
+    "region": "Asia",
+    "population": 1172390,
+    "currencyCode": "USD",
+    "currencySymbol": "$",
+    "languages": [
+      "pt"
+    ],
+    "callingCode": "670",
+    "flag": "https://flagcdn.com/w320/tl.png"
+  },
+  {
+    "name": "Ecuador",
+    "code": "EC",
+    "capital": "Quito",
+    "region": "Americas",
+    "population": 15888900,
+    "currencyCode": "USD",
+    "currencySymbol": "$",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "593",
+    "flag": "https://flagcdn.com/w320/ec.png"
+  },
+  {
+    "name": "Egypt",
+    "code": "EG",
+    "capital": "Cairo",
+    "region": "Africa",
+    "population": 87668100,
+    "currencyCode": "EGP",
+    "currencySymbol": "EGP",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "20",
+    "flag": "https://flagcdn.com/w320/eg.png"
+  },
+  {
+    "name": "El Salvador",
+    "code": "SV",
+    "capital": "San Salvador",
+    "region": "Americas",
+    "population": 6401240,
+    "currencyCode": "SVC",
+    "currencySymbol": "SVC",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "503",
+    "flag": "https://flagcdn.com/w320/sv.png"
+  },
+  {
+    "name": "Equatorial Guinea",
+    "code": "GQ",
+    "capital": "Malabo",
+    "region": "Africa",
+    "population": 1430000,
+    "currencyCode": "XAF",
+    "currencySymbol": "FCFA",
+    "languages": [
+      "es",
+      "fr"
+    ],
+    "callingCode": "240",
+    "flag": "https://flagcdn.com/w320/gq.png"
+  },
+  {
+    "name": "Eritrea",
+    "code": "ER",
+    "capital": "Asmara",
+    "region": "Africa",
+    "population": 6536000,
+    "currencyCode": "ERN",
+    "currencySymbol": "ERN",
+    "languages": [
+      "ti",
+      "ar",
+      "en"
+    ],
+    "callingCode": "291",
+    "flag": "https://flagcdn.com/w320/er.png"
+  },
+  {
+    "name": "Estonia",
+    "code": "EE",
+    "capital": "Tallinn",
+    "region": "Europe",
+    "population": 1315819,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "et"
+    ],
+    "callingCode": "372",
+    "flag": "https://flagcdn.com/w320/ee.png"
+  },
+  {
+    "name": "Ethiopia",
+    "code": "ET",
+    "capital": "Addis Ababa",
+    "region": "Africa",
+    "population": 87952991,
+    "currencyCode": "ETB",
+    "currencySymbol": "ETB",
+    "languages": [
+      "am"
+    ],
+    "callingCode": "251",
+    "flag": "https://flagcdn.com/w320/et.png"
+  },
+  {
+    "name": "Federated States of Micronesia",
+    "code": "FM",
+    "capital": "Palikir",
+    "region": "Oceania",
+    "population": 101351,
+    "currencyCode": "USD",
+    "currencySymbol": "$",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "691",
+    "flag": "https://flagcdn.com/w320/fm.png"
+  },
+  {
+    "name": "Fiji",
+    "code": "FJ",
+    "capital": "Suva",
+    "region": "Oceania",
+    "population": 859178,
+    "currencyCode": "FJD",
+    "currencySymbol": "FJD",
+    "languages": [
+      "en",
+      "fj",
+      "hi",
+      "ur"
+    ],
+    "callingCode": "679",
+    "flag": "https://flagcdn.com/w320/fj.png"
+  },
+  {
+    "name": "Finland",
+    "code": "FI",
+    "capital": "Helsinki",
+    "region": "Europe",
+    "population": 5470437,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "fi",
+      "sv"
+    ],
+    "callingCode": "358",
+    "flag": "https://flagcdn.com/w320/fi.png"
+  },
+  {
+    "name": "France",
+    "code": "FR",
+    "capital": "Paris",
+    "region": "Europe",
+    "population": 66078000,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "fr"
+    ],
+    "callingCode": "33",
+    "flag": "https://flagcdn.com/w320/fr.png"
+  },
+  {
+    "name": "Gabon",
+    "code": "GA",
+    "capital": "Libreville",
+    "region": "Africa",
+    "population": 1711000,
+    "currencyCode": "XAF",
+    "currencySymbol": "FCFA",
+    "languages": [
+      "fr"
+    ],
+    "callingCode": "241",
+    "flag": "https://flagcdn.com/w320/ga.png"
+  },
+  {
+    "name": "Georgia",
+    "code": "GE",
+    "capital": "Tbilisi",
+    "region": "Asia",
+    "population": 4490500,
+    "currencyCode": "GEL",
+    "currencySymbol": "GEL",
+    "languages": [
+      "ka"
+    ],
+    "callingCode": "995",
+    "flag": "https://flagcdn.com/w320/ge.png"
+  },
+  {
+    "name": "Germany",
+    "code": "DE",
+    "capital": "Berlin",
+    "region": "Europe",
+    "population": 80783000,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "de"
+    ],
+    "callingCode": "49",
+    "flag": "https://flagcdn.com/w320/de.png"
+  },
+  {
+    "name": "Ghana",
+    "code": "GH",
+    "capital": "Accra",
+    "region": "Africa",
+    "population": 27043093,
+    "currencyCode": "GHS",
+    "currencySymbol": "GHS",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "233",
+    "flag": "https://flagcdn.com/w320/gh.png"
+  },
+  {
+    "name": "Greece",
+    "code": "GR",
+    "capital": "Athens",
+    "region": "Europe",
+    "population": 10992589,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "el"
+    ],
+    "callingCode": "30",
+    "flag": "https://flagcdn.com/w320/gr.png"
+  },
+  {
+    "name": "Grenada",
+    "code": "GD",
+    "capital": "St. George's",
+    "region": "Americas",
+    "population": 103328,
+    "currencyCode": "XCD",
+    "currencySymbol": "EC$",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "1473",
+    "flag": "https://flagcdn.com/w320/gd.png"
+  },
+  {
+    "name": "Guatemala",
+    "code": "GT",
+    "capital": "Guatemala City",
+    "region": "Americas",
+    "population": 15806675,
+    "currencyCode": "GTQ",
+    "currencySymbol": "GTQ",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "502",
+    "flag": "https://flagcdn.com/w320/gt.png"
+  },
+  {
+    "name": "Guinea",
+    "code": "GN",
+    "capital": "Conakry",
+    "region": "Africa",
+    "population": 10628972,
+    "currencyCode": "GNF",
+    "currencySymbol": "GNF",
+    "languages": [
+      "fr",
+      "ff"
+    ],
+    "callingCode": "224",
+    "flag": "https://flagcdn.com/w320/gn.png"
+  },
+  {
+    "name": "Guinea-Bissau",
+    "code": "GW",
+    "capital": "Bissau",
+    "region": "Africa",
+    "population": 1746000,
+    "currencyCode": "XOF",
+    "currencySymbol": "F CFA",
+    "languages": [
+      "pt"
+    ],
+    "callingCode": "245",
+    "flag": "https://flagcdn.com/w320/gw.png"
+  },
+  {
+    "name": "Guyana",
+    "code": "GY",
+    "capital": "Georgetown",
+    "region": "Americas",
+    "population": 784894,
+    "currencyCode": "GYD",
+    "currencySymbol": "GYD",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "592",
+    "flag": "https://flagcdn.com/w320/gy.png"
+  },
+  {
+    "name": "Haiti",
+    "code": "HT",
+    "capital": "Port-au-Prince",
+    "region": "Americas",
+    "population": 10745665,
+    "currencyCode": "HTG",
+    "currencySymbol": "HTG",
+    "languages": [
+      "fr",
+      "ht"
+    ],
+    "callingCode": "509",
+    "flag": "https://flagcdn.com/w320/ht.png"
+  },
+  {
+    "name": "Honduras",
+    "code": "HN",
+    "capital": "Tegucigalpa",
+    "region": "Americas",
+    "population": 8725111,
+    "currencyCode": "HNL",
+    "currencySymbol": "HNL",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "504",
+    "flag": "https://flagcdn.com/w320/hn.png"
+  },
+  {
+    "name": "Hungary",
+    "code": "HU",
+    "capital": "Budapest",
+    "region": "Europe",
+    "population": 9539502,
+    "currencyCode": "HUF",
+    "currencySymbol": "Ft",
+    "languages": [
+      "Hungarian"
+    ],
+    "callingCode": "+36",
+    "flag": "https://flagcdn.com/w320/hu.png"
+  },
+  {
+    "name": "Iceland",
+    "code": "IS",
+    "capital": "Reykjavik",
+    "region": "Europe",
+    "population": 328170,
+    "currencyCode": "ISK",
+    "currencySymbol": "ISK",
+    "languages": [
+      "is"
+    ],
+    "callingCode": "354",
+    "flag": "https://flagcdn.com/w320/is.png"
+  },
+  {
+    "name": "India",
+    "code": "IN",
+    "capital": "New Delhi",
+    "region": "Asia",
+    "population": 1263930000,
+    "currencyCode": "INR",
+    "currencySymbol": "₹",
+    "languages": [
+      "hi",
+      "en"
+    ],
+    "callingCode": "91",
+    "flag": "https://flagcdn.com/w320/in.png"
+  },
+  {
+    "name": "Indonesia",
+    "code": "ID",
+    "capital": "Jakarta",
+    "region": "Asia",
+    "population": 252164800,
+    "currencyCode": "IDR",
+    "currencySymbol": "IDR",
+    "languages": [
+      "id"
+    ],
+    "callingCode": "62",
+    "flag": "https://flagcdn.com/w320/id.png"
+  },
+  {
+    "name": "Iran",
+    "code": "IR",
+    "capital": "Tehran",
+    "region": "Asia",
+    "population": 77966400,
+    "currencyCode": "IRR",
+    "currencySymbol": "IRR",
+    "languages": [
+      "fa"
+    ],
+    "callingCode": "98",
+    "flag": "https://flagcdn.com/w320/ir.png"
+  },
+  {
+    "name": "Iraq",
+    "code": "IQ",
+    "capital": "Baghdad",
+    "region": "Asia",
+    "population": 36004552,
+    "currencyCode": "IQD",
+    "currencySymbol": "IQD",
+    "languages": [
+      "ar",
+      "ku"
+    ],
+    "callingCode": "964",
+    "flag": "https://flagcdn.com/w320/iq.png"
+  },
+  {
+    "name": "Ireland",
+    "code": "IE",
+    "capital": "Dublin",
+    "region": "Europe",
+    "population": 6378000,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "ga",
+      "en"
+    ],
+    "callingCode": "353",
+    "flag": "https://flagcdn.com/w320/ie.png"
+  },
+  {
+    "name": "Israel",
+    "code": "IL",
+    "capital": "Jerusalem",
+    "region": "Asia",
+    "population": 8268400,
+    "currencyCode": "ILS",
+    "currencySymbol": "₪",
+    "languages": [
+      "he",
+      "ar"
+    ],
+    "callingCode": "972",
+    "flag": "https://flagcdn.com/w320/il.png"
+  },
+  {
+    "name": "Italy",
+    "code": "IT",
+    "capital": "Rome",
+    "region": "Europe",
+    "population": 60769102,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "it"
+    ],
+    "callingCode": "39",
+    "flag": "https://flagcdn.com/w320/it.png"
+  },
+  {
+    "name": "Ivory Coast",
+    "code": "CI",
+    "capital": "Yamoussoukro",
+    "region": "Africa",
+    "population": 23821000,
+    "currencyCode": "XOF",
+    "currencySymbol": "F CFA",
+    "languages": [
+      "fr"
+    ],
+    "callingCode": "225",
+    "flag": "https://flagcdn.com/w320/ci.png"
+  },
+  {
+    "name": "Jamaica",
+    "code": "JM",
+    "capital": "Kingston",
+    "region": "Americas",
+    "population": 2717991,
+    "currencyCode": "JMD",
+    "currencySymbol": "JMD",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "1876",
+    "flag": "https://flagcdn.com/w320/jm.png"
+  },
+  {
+    "name": "Japan",
+    "code": "JP",
+    "capital": "Tokyo",
+    "region": "Asia",
+    "population": 127080000,
+    "currencyCode": "JPY",
+    "currencySymbol": "¥",
+    "languages": [
+      "ja"
+    ],
+    "callingCode": "81",
+    "flag": "https://flagcdn.com/w320/jp.png"
+  },
+  {
+    "name": "Jordan",
+    "code": "JO",
+    "capital": "Amman",
+    "region": "Asia",
+    "population": 6666960,
+    "currencyCode": "JOD",
+    "currencySymbol": "JOD",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "962",
+    "flag": "https://flagcdn.com/w320/jo.png"
+  },
+  {
+    "name": "Kazakhstan",
+    "code": "KZ",
+    "capital": "Astana",
+    "region": "Asia",
+    "population": 17377800,
+    "currencyCode": "KZT",
+    "currencySymbol": "KZT",
+    "languages": [
+      "kk",
+      "ru"
+    ],
+    "callingCode": "76",
+    "flag": "https://flagcdn.com/w320/kz.png"
+  },
+  {
+    "name": "Kenya",
+    "code": "KE",
+    "capital": "Nairobi",
+    "region": "Africa",
+    "population": 41800000,
+    "currencyCode": "KES",
+    "currencySymbol": "KES",
+    "languages": [
+      "en",
+      "sw"
+    ],
+    "callingCode": "254",
+    "flag": "https://flagcdn.com/w320/ke.png"
+  },
+  {
+    "name": "Kiribati",
+    "code": "KI",
+    "capital": "South Tarawa",
+    "region": "Oceania",
+    "population": 106461,
+    "currencyCode": "AUD",
+    "currencySymbol": "A$",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "686",
+    "flag": "https://flagcdn.com/w320/ki.png"
+  },
+  {
+    "name": "Kuwait",
+    "code": "KW",
+    "capital": "Kuwait City",
+    "region": "Asia",
+    "population": 3268431,
+    "currencyCode": "KWD",
+    "currencySymbol": "KWD",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "965",
+    "flag": "https://flagcdn.com/w320/kw.png"
+  },
+  {
+    "name": "Kyrgyzstan",
+    "code": "KG",
+    "capital": "Bishkek",
+    "region": "Asia",
+    "population": 5776570,
+    "currencyCode": "KGS",
+    "currencySymbol": "KGS",
+    "languages": [
+      "ky",
+      "ru"
+    ],
+    "callingCode": "996",
+    "flag": "https://flagcdn.com/w320/kg.png"
+  },
+  {
+    "name": "Laos",
+    "code": "LA",
+    "capital": "Vientiane",
+    "region": "Asia",
+    "population": 6693300,
+    "currencyCode": "LAK",
+    "currencySymbol": "LAK",
+    "languages": [
+      "lo"
+    ],
+    "callingCode": "856",
+    "flag": "https://flagcdn.com/w320/la.png"
+  },
+  {
+    "name": "Latvia",
+    "code": "LV",
+    "capital": "Riga",
+    "region": "Europe",
+    "population": 1991800,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "lv"
+    ],
+    "callingCode": "371",
+    "flag": "https://flagcdn.com/w320/lv.png"
+  },
+  {
+    "name": "Lebanon",
+    "code": "LB",
+    "capital": "Beirut",
+    "region": "Asia",
+    "population": 4104000,
+    "currencyCode": "LBP",
+    "currencySymbol": "LBP",
+    "languages": [
+      "ar",
+      "fr"
+    ],
+    "callingCode": "961",
+    "flag": "https://flagcdn.com/w320/lb.png"
+  },
+  {
+    "name": "Lesotho",
+    "code": "LS",
+    "capital": "Maseru",
+    "region": "Africa",
+    "population": 2098000,
+    "currencyCode": "LSL",
+    "currencySymbol": "LSL",
+    "languages": [
+      "en",
+      "st"
+    ],
+    "callingCode": "266",
+    "flag": "https://flagcdn.com/w320/ls.png"
+  },
+  {
+    "name": "Liberia",
+    "code": "LR",
+    "capital": "Monrovia",
+    "region": "Africa",
+    "population": 4397000,
+    "currencyCode": "LRD",
+    "currencySymbol": "LRD",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "231",
+    "flag": "https://flagcdn.com/w320/lr.png"
+  },
+  {
+    "name": "Libya",
+    "code": "LY",
+    "capital": "Tripoli",
+    "region": "Africa",
+    "population": 6253000,
+    "currencyCode": "LYD",
+    "currencySymbol": "LYD",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "218",
+    "flag": "https://flagcdn.com/w320/ly.png"
+  },
+  {
+    "name": "Liechtenstein",
+    "code": "LI",
+    "capital": "Vaduz",
+    "region": "Europe",
+    "population": 37132,
+    "currencyCode": "CHF",
+    "currencySymbol": "CHF",
+    "languages": [
+      "de"
+    ],
+    "callingCode": "423",
+    "flag": "https://flagcdn.com/w320/li.png"
+  },
+  {
+    "name": "Lithuania",
+    "code": "LT",
+    "capital": "Vilnius",
+    "region": "Europe",
+    "population": 2927310,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "lt"
+    ],
+    "callingCode": "370",
+    "flag": "https://flagcdn.com/w320/lt.png"
+  },
+  {
+    "name": "Luxembourg",
+    "code": "LU",
+    "capital": "Luxembourg",
+    "region": "Europe",
+    "population": 549700,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "fr",
+      "de",
+      "lb"
+    ],
+    "callingCode": "352",
+    "flag": "https://flagcdn.com/w320/lu.png"
+  },
+  {
+    "name": "Madagascar",
+    "code": "MG",
+    "capital": "Antananarivo",
+    "region": "Africa",
+    "population": 21842167,
+    "currencyCode": "MGA",
+    "currencySymbol": "MGA",
+    "languages": [
+      "fr",
+      "mg"
+    ],
+    "callingCode": "261",
+    "flag": "https://flagcdn.com/w320/mg.png"
+  },
+  {
+    "name": "Malawi",
+    "code": "MW",
+    "capital": "Lilongwe",
+    "region": "Africa",
+    "population": 15805239,
+    "currencyCode": "MWK",
+    "currencySymbol": "MWK",
+    "languages": [
+      "en",
+      "ny"
+    ],
+    "callingCode": "265",
+    "flag": "https://flagcdn.com/w320/mw.png"
+  },
+  {
+    "name": "Malaysia",
+    "code": "MY",
+    "capital": "Kuala Lumpur",
+    "region": "Asia",
+    "population": 30430500,
+    "currencyCode": "MYR",
+    "currencySymbol": "MYR",
+    "languages": [],
+    "callingCode": "60",
+    "flag": "https://flagcdn.com/w320/my.png"
+  },
+  {
+    "name": "Maldives",
+    "code": "MV",
+    "capital": "Malé",
+    "region": "Asia",
+    "population": 341256,
+    "currencyCode": "MVR",
+    "currencySymbol": "MVR",
+    "languages": [
+      "dv"
+    ],
+    "callingCode": "960",
+    "flag": "https://flagcdn.com/w320/mv.png"
+  },
+  {
+    "name": "Mali",
+    "code": "ML",
+    "capital": "Bamako",
+    "region": "Africa",
+    "population": 15768000,
+    "currencyCode": "XOF",
+    "currencySymbol": "F CFA",
+    "languages": [
+      "fr"
+    ],
+    "callingCode": "223",
+    "flag": "https://flagcdn.com/w320/ml.png"
+  },
+  {
+    "name": "Malta",
+    "code": "MT",
+    "capital": "Valletta",
+    "region": "Europe",
+    "population": 416055,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "mt",
+      "en"
+    ],
+    "callingCode": "356",
+    "flag": "https://flagcdn.com/w320/mt.png"
+  },
+  {
+    "name": "Marshall Islands",
+    "code": "MH",
+    "capital": "Majuro",
+    "region": "Oceania",
+    "population": 56086,
+    "currencyCode": "USD",
+    "currencySymbol": "$",
+    "languages": [
+      "en",
+      "mh"
+    ],
+    "callingCode": "692",
+    "flag": "https://flagcdn.com/w320/mh.png"
+  },
+  {
+    "name": "Martinique",
+    "code": "MQ",
+    "capital": "Fort-de-France",
+    "region": "Americas",
+    "population": 386486,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "fr"
+    ],
+    "callingCode": "596",
+    "flag": "https://flagcdn.com/w320/mq.png"
+  },
+  {
+    "name": "Mauritania",
+    "code": "MR",
+    "capital": "Nouakchott",
+    "region": "Africa",
+    "population": 3545620,
+    "currencyCode": "MRO",
+    "currencySymbol": "MRO",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "222",
+    "flag": "https://flagcdn.com/w320/mr.png"
+  },
+  {
+    "name": "Mauritius",
+    "code": "MU",
+    "capital": "Port Louis",
+    "region": "Africa",
+    "population": 1261208,
+    "currencyCode": "MUR",
+    "currencySymbol": "MUR",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "230",
+    "flag": "https://flagcdn.com/w320/mu.png"
+  },
+  {
+    "name": "Mexico",
+    "code": "MX",
+    "capital": "Mexico City",
+    "region": "Americas",
+    "population": 119713203,
+    "currencyCode": "MXN",
+    "currencySymbol": "MX$",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "52",
+    "flag": "https://flagcdn.com/w320/mx.png"
+  },
+  {
+    "name": "Moldova",
+    "code": "MD",
+    "capital": "Chișinău",
+    "region": "Europe",
+    "population": 3557600,
+    "currencyCode": "MDL",
+    "currencySymbol": "MDL",
+    "languages": [
+      "ro"
+    ],
+    "callingCode": "373",
+    "flag": "https://flagcdn.com/w320/md.png"
+  },
+  {
+    "name": "Monaco",
+    "code": "MC",
+    "capital": "Monaco",
+    "region": "Europe",
+    "population": 36950,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "fr"
+    ],
+    "callingCode": "377",
+    "flag": "https://flagcdn.com/w320/mc.png"
+  },
+  {
+    "name": "Mongolia",
+    "code": "MN",
+    "capital": "Ulan Bator",
+    "region": "Asia",
+    "population": 2987733,
+    "currencyCode": "MNT",
+    "currencySymbol": "MNT",
+    "languages": [
+      "mn"
+    ],
+    "callingCode": "976",
+    "flag": "https://flagcdn.com/w320/mn.png"
+  },
+  {
+    "name": "Morocco",
+    "code": "MA",
+    "capital": "Rabat",
+    "region": "Africa",
+    "population": 33465000,
+    "currencyCode": "MAD",
+    "currencySymbol": "MAD",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "212",
+    "flag": "https://flagcdn.com/w320/ma.png"
+  },
+  {
+    "name": "Mozambique",
+    "code": "MZ",
+    "capital": "Maputo",
+    "region": "Africa",
+    "population": 25041922,
+    "currencyCode": "MZN",
+    "currencySymbol": "MZN",
+    "languages": [
+      "pt"
+    ],
+    "callingCode": "258",
+    "flag": "https://flagcdn.com/w320/mz.png"
+  },
+  {
+    "name": "Namibia",
+    "code": "NA",
+    "capital": "Windhoek",
+    "region": "Africa",
+    "population": 2113077,
+    "currencyCode": "NAD",
+    "currencySymbol": "NAD",
+    "languages": [
+      "en",
+      "af"
+    ],
+    "callingCode": "264",
+    "flag": "https://flagcdn.com/w320/na.png"
+  },
+  {
+    "name": "Nauru",
+    "code": "NR",
+    "capital": "Yaren",
+    "region": "Oceania",
+    "population": 10084,
+    "currencyCode": "AUD",
+    "currencySymbol": "A$",
+    "languages": [
+      "en",
+      "na"
+    ],
+    "callingCode": "674",
+    "flag": "https://flagcdn.com/w320/nr.png"
+  },
+  {
+    "name": "Nepal",
+    "code": "NP",
+    "capital": "Kathmandu",
+    "region": "Asia",
+    "population": 27646053,
+    "currencyCode": "NPR",
+    "currencySymbol": "NPR",
+    "languages": [
+      "ne"
+    ],
+    "callingCode": "977",
+    "flag": "https://flagcdn.com/w320/np.png"
+  },
+  {
+    "name": "Netherlands",
+    "code": "NL",
+    "capital": "Amsterdam",
+    "region": "Europe",
+    "population": 16881000,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "nl"
+    ],
+    "callingCode": "31",
+    "flag": "https://flagcdn.com/w320/nl.png"
+  },
+  {
+    "name": "New Zealand",
+    "code": "NZ",
+    "capital": "Wellington",
+    "region": "Oceania",
+    "population": 4547900,
+    "currencyCode": "NZD",
+    "currencySymbol": "NZ$",
+    "languages": [
+      "en",
+      "mi"
+    ],
+    "callingCode": "64",
+    "flag": "https://flagcdn.com/w320/nz.png"
+  },
+  {
+    "name": "Nicaragua",
+    "code": "NI",
+    "capital": "Managua",
+    "region": "Americas",
+    "population": 6134270,
+    "currencyCode": "NIO",
+    "currencySymbol": "NIO",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "505",
+    "flag": "https://flagcdn.com/w320/ni.png"
+  },
+  {
+    "name": "Niger",
+    "code": "NE",
+    "capital": "Niamey",
+    "region": "Africa",
+    "population": 17138707,
+    "currencyCode": "XOF",
+    "currencySymbol": "F CFA",
+    "languages": [
+      "fr"
+    ],
+    "callingCode": "227",
+    "flag": "https://flagcdn.com/w320/ne.png"
+  },
+  {
+    "name": "Nigeria",
+    "code": "NG",
+    "capital": "Abuja",
+    "region": "Africa",
+    "population": 178517000,
+    "currencyCode": "NGN",
+    "currencySymbol": "NGN",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "234",
+    "flag": "https://flagcdn.com/w320/ng.png"
+  },
+  {
+    "name": "North Korea",
+    "code": "KP",
+    "capital": "Pyongyang",
+    "region": "Asia",
+    "population": 25027000,
+    "currencyCode": "KPW",
+    "currencySymbol": "KPW",
+    "languages": [
+      "ko"
+    ],
+    "callingCode": "850",
+    "flag": "https://flagcdn.com/w320/kp.png"
+  },
+  {
+    "name": "Norway",
+    "code": "NO",
+    "capital": "Oslo",
+    "region": "Europe",
+    "population": 5156450,
+    "currencyCode": "NOK",
+    "currencySymbol": "NOK",
+    "languages": [
+      "no",
+      "nb",
+      "nn"
+    ],
+    "callingCode": "47",
+    "flag": "https://flagcdn.com/w320/no.png"
+  },
+  {
+    "name": "Oman",
+    "code": "OM",
+    "capital": "Muscat",
+    "region": "Asia",
+    "population": 4089076,
+    "currencyCode": "OMR",
+    "currencySymbol": "OMR",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "968",
+    "flag": "https://flagcdn.com/w320/om.png"
+  },
+  {
+    "name": "Pakistan",
+    "code": "PK",
+    "capital": "Islamabad",
+    "region": "Asia",
+    "population": 188410000,
+    "currencyCode": "PKR",
+    "currencySymbol": "PKR",
+    "languages": [
+      "en",
+      "ur"
+    ],
+    "callingCode": "92",
+    "flag": "https://flagcdn.com/w320/pk.png"
+  },
+  {
+    "name": "Palau",
+    "code": "PW",
+    "capital": "Ngerulmud",
+    "region": "Oceania",
+    "population": 20901,
+    "currencyCode": "USD",
+    "currencySymbol": "$",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "680",
+    "flag": "https://flagcdn.com/w320/pw.png"
+  },
+  {
+    "name": "Panama",
+    "code": "PA",
+    "capital": "Panama City",
+    "region": "Americas",
+    "population": 3713312,
+    "currencyCode": "PAB",
+    "currencySymbol": "PAB",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "507",
+    "flag": "https://flagcdn.com/w320/pa.png"
+  },
+  {
+    "name": "Papua New Guinea",
+    "code": "PG",
+    "capital": "Port Moresby",
+    "region": "Oceania",
+    "population": 7398500,
+    "currencyCode": "PGK",
+    "currencySymbol": "PGK",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "675",
+    "flag": "https://flagcdn.com/w320/pg.png"
+  },
+  {
+    "name": "Paraguay",
+    "code": "PY",
+    "capital": "Asunción",
+    "region": "Americas",
+    "population": 6893727,
+    "currencyCode": "PYG",
+    "currencySymbol": "PYG",
+    "languages": [
+      "es",
+      "gn"
+    ],
+    "callingCode": "595",
+    "flag": "https://flagcdn.com/w320/py.png"
+  },
+  {
+    "name": "Peru",
+    "code": "PE",
+    "capital": "Lima",
+    "region": "Americas",
+    "population": 30814175,
+    "currencyCode": "PEN",
+    "currencySymbol": "PEN",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "51",
+    "flag": "https://flagcdn.com/w320/pe.png"
+  },
+  {
+    "name": "Philippines",
+    "code": "PH",
+    "capital": "Manila",
+    "region": "Asia",
+    "population": 100697400,
+    "currencyCode": "PHP",
+    "currencySymbol": "₱",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "63",
+    "flag": "https://flagcdn.com/w320/ph.png"
+  },
+  {
+    "name": "Poland",
+    "code": "PL",
+    "capital": "Warsaw",
+    "region": "Europe",
+    "population": 38496000,
+    "currencyCode": "PLN",
+    "currencySymbol": "PLN",
+    "languages": [
+      "pl"
+    ],
+    "callingCode": "48",
+    "flag": "https://flagcdn.com/w320/pl.png"
+  },
+  {
+    "name": "Portugal",
+    "code": "PT",
+    "capital": "Lisbon",
+    "region": "Europe",
+    "population": 10477800,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "pt"
+    ],
+    "callingCode": "351",
+    "flag": "https://flagcdn.com/w320/pt.png"
+  },
+  {
+    "name": "Qatar",
+    "code": "QA",
+    "capital": "Doha",
+    "region": "Asia",
+    "population": 2269672,
+    "currencyCode": "QAR",
+    "currencySymbol": "QAR",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "974",
+    "flag": "https://flagcdn.com/w320/qa.png"
+  },
+  {
+    "name": "Republic of Macedonia",
+    "code": "MK",
+    "capital": "Skopje",
+    "region": "Europe",
+    "population": 2058539,
+    "currencyCode": "MKD",
+    "currencySymbol": "MKD",
+    "languages": [
+      "mk"
+    ],
+    "callingCode": "389",
+    "flag": "https://flagcdn.com/w320/mk.png"
+  },
+  {
+    "name": "Republic of the Congo",
+    "code": "CG",
+    "capital": "Brazzaville",
+    "region": "Africa",
+    "population": 4559000,
+    "currencyCode": "XAF",
+    "currencySymbol": "FCFA",
+    "languages": [
+      "fr",
+      "ln"
+    ],
+    "callingCode": "242",
+    "flag": "https://flagcdn.com/w320/cg.png"
+  },
+  {
+    "name": "Romania",
+    "code": "RO",
+    "capital": "Bucharest",
+    "region": "Europe",
+    "population": 19942642,
+    "currencyCode": "RON",
+    "currencySymbol": "RON",
+    "languages": [
+      "ro"
+    ],
+    "callingCode": "40",
+    "flag": "https://flagcdn.com/w320/ro.png"
+  },
+  {
+    "name": "Russia",
+    "code": "RU",
+    "capital": "Moscow",
+    "region": "Europe",
+    "population": 146233000,
+    "currencyCode": "RUB",
+    "currencySymbol": "RUB",
+    "languages": [
+      "ru"
+    ],
+    "callingCode": "7",
+    "flag": "https://flagcdn.com/w320/ru.png"
+  },
+  {
+    "name": "Rwanda",
+    "code": "RW",
+    "capital": "Kigali",
+    "region": "Africa",
+    "population": 10996891,
+    "currencyCode": "RWF",
+    "currencySymbol": "RWF",
+    "languages": [
+      "rw",
+      "en",
+      "fr"
+    ],
+    "callingCode": "250",
+    "flag": "https://flagcdn.com/w320/rw.png"
+  },
+  {
+    "name": "Saint Helena",
+    "code": "SH",
+    "capital": "Jamestown",
+    "region": "Africa",
+    "population": 4255,
+    "currencyCode": "SHP",
+    "currencySymbol": "SHP",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "290",
+    "flag": "https://flagcdn.com/w320/sh.png"
+  },
+  {
+    "name": "Saint Kitts and Nevis",
+    "code": "KN",
+    "capital": "Basseterre",
+    "region": "Americas",
+    "population": 55000,
+    "currencyCode": "XCD",
+    "currencySymbol": "EC$",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "1869",
+    "flag": "https://flagcdn.com/w320/kn.png"
+  },
+  {
+    "name": "Saint Lucia",
+    "code": "LC",
+    "capital": "Castries",
+    "region": "Americas",
+    "population": 184000,
+    "currencyCode": "XCD",
+    "currencySymbol": "EC$",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "1758",
+    "flag": "https://flagcdn.com/w320/lc.png"
+  },
+  {
+    "name": "Saint Vincent and the Grenadines",
+    "code": "VC",
+    "capital": "Kingstown",
+    "region": "Americas",
+    "population": 109000,
+    "currencyCode": "XCD",
+    "currencySymbol": "EC$",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "1784",
+    "flag": "https://flagcdn.com/w320/vc.png"
+  },
+  {
+    "name": "Samoa",
+    "code": "WS",
+    "capital": "Apia",
+    "region": "Oceania",
+    "population": 187820,
+    "currencyCode": "WST",
+    "currencySymbol": "WST",
+    "languages": [
+      "sm",
+      "en"
+    ],
+    "callingCode": "685",
+    "flag": "https://flagcdn.com/w320/ws.png"
+  },
+  {
+    "name": "San Marino",
+    "code": "SM",
+    "capital": "City of San Marino",
+    "region": "Europe",
+    "population": 32743,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "it"
+    ],
+    "callingCode": "378",
+    "flag": "https://flagcdn.com/w320/sm.png"
+  },
+  {
+    "name": "Saudi Arabia",
+    "code": "SA",
+    "capital": "Riyadh",
+    "region": "Asia",
+    "population": 30770375,
+    "currencyCode": "SAR",
+    "currencySymbol": "SAR",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "966",
+    "flag": "https://flagcdn.com/w320/sa.png"
+  },
+  {
+    "name": "Senegal",
+    "code": "SN",
+    "capital": "Dakar",
+    "region": "Africa",
+    "population": 13508715,
+    "currencyCode": "XOF",
+    "currencySymbol": "F CFA",
+    "languages": [
+      "fr"
+    ],
+    "callingCode": "221",
+    "flag": "https://flagcdn.com/w320/sn.png"
+  },
+  {
+    "name": "Serbia",
+    "code": "RS",
+    "capital": "Belgrade",
+    "region": "Europe",
+    "population": 7186862,
+    "currencyCode": "RSD",
+    "currencySymbol": "RSD",
+    "languages": [
+      "rs"
+    ],
+    "callingCode": "381",
+    "flag": "https://flagcdn.com/w320/rs.png"
+  },
+  {
+    "name": "Seychelles",
+    "code": "SC",
+    "capital": "Victoria",
+    "region": "Africa",
+    "population": 89949,
+    "currencyCode": "SCR",
+    "currencySymbol": "SCR",
+    "languages": [
+      "fr",
+      "en"
+    ],
+    "callingCode": "248",
+    "flag": "https://flagcdn.com/w320/sc.png"
+  },
+  {
+    "name": "Sierra Leone",
+    "code": "SL",
+    "capital": "Freetown",
+    "region": "Africa",
+    "population": 6205000,
+    "currencyCode": "SLL",
+    "currencySymbol": "SLL",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "232",
+    "flag": "https://flagcdn.com/w320/sl.png"
+  },
+  {
+    "name": "Singapore",
+    "code": "SG",
+    "capital": "Singapore",
+    "region": "Asia",
+    "population": 5469700,
+    "currencyCode": "SGD",
+    "currencySymbol": "SGD",
+    "languages": [
+      "en",
+      "ms",
+      "ta",
+      "zh"
+    ],
+    "callingCode": "65",
+    "flag": "https://flagcdn.com/w320/sg.png"
+  },
+  {
+    "name": "Slovakia",
+    "code": "SK",
+    "capital": "Bratislava",
+    "region": "Europe",
+    "population": 5415949,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "sk"
+    ],
+    "callingCode": "421",
+    "flag": "https://flagcdn.com/w320/sk.png"
+  },
+  {
+    "name": "Slovenia",
+    "code": "SI",
+    "capital": "Ljubljana",
+    "region": "Europe",
+    "population": 2064966,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "sl"
+    ],
+    "callingCode": "386",
+    "flag": "https://flagcdn.com/w320/si.png"
+  },
+  {
+    "name": "Solomon Islands",
+    "code": "SB",
+    "capital": "Honiara",
+    "region": "Oceania",
+    "population": 581344,
+    "currencyCode": "SBD",
+    "currencySymbol": "SBD",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "677",
+    "flag": "https://flagcdn.com/w320/sb.png"
+  },
+  {
+    "name": "Somalia",
+    "code": "SO",
+    "capital": "Mogadishu",
+    "region": "Africa",
+    "population": 10806000,
+    "currencyCode": "SOS",
+    "currencySymbol": "SOS",
+    "languages": [
+      "so",
+      "ar"
+    ],
+    "callingCode": "252",
+    "flag": "https://flagcdn.com/w320/so.png"
+  },
+  {
+    "name": "South Africa",
+    "code": "ZA",
+    "capital": "Pretoria",
+    "region": "Africa",
+    "population": 54002000,
+    "currencyCode": "ZAR",
+    "currencySymbol": "ZAR",
+    "languages": [
+      "af",
+      "en",
+      "nr",
+      "st",
+      "ss",
+      "tn",
+      "ts",
+      "ve",
+      "xh",
+      "zu"
+    ],
+    "callingCode": "27",
+    "flag": "https://flagcdn.com/w320/za.png"
+  },
+  {
+    "name": "South Korea",
+    "code": "KR",
+    "capital": "Seoul",
+    "region": "Asia",
+    "population": 50423955,
+    "currencyCode": "KRW",
+    "currencySymbol": "₩",
+    "languages": [
+      "ko"
+    ],
+    "callingCode": "82",
+    "flag": "https://flagcdn.com/w320/kr.png"
+  },
+  {
+    "name": "South Sudan",
+    "code": "SS",
+    "capital": "Juba",
+    "region": "Africa",
+    "population": 11384393,
+    "currencyCode": "SSP",
+    "currencySymbol": "SSP",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "211",
+    "flag": "https://flagcdn.com/w320/ss.png"
+  },
+  {
+    "name": "Spain",
+    "code": "ES",
+    "capital": "Madrid",
+    "region": "Europe",
+    "population": 46507760,
+    "currencyCode": "EUR",
+    "currencySymbol": "€",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "34",
+    "flag": "https://flagcdn.com/w320/es.png"
+  },
+  {
+    "name": "Sri Lanka",
+    "code": "LK",
+    "capital": "Colombo",
+    "region": "Asia",
+    "population": 20277597,
+    "currencyCode": "LKR",
+    "currencySymbol": "LKR",
+    "languages": [
+      "si",
+      "ta"
+    ],
+    "callingCode": "94",
+    "flag": "https://flagcdn.com/w320/lk.png"
+  },
+  {
+    "name": "Sudan",
+    "code": "SD",
+    "capital": "Khartoum",
+    "region": "Africa",
+    "population": 37289406,
+    "currencyCode": "SDG",
+    "currencySymbol": "SDG",
+    "languages": [
+      "ar",
+      "en"
+    ],
+    "callingCode": "249",
+    "flag": "https://flagcdn.com/w320/sd.png"
+  },
+  {
+    "name": "Suriname",
+    "code": "SR",
+    "capital": "Paramaribo",
+    "region": "Americas",
+    "population": 534189,
+    "currencyCode": "SRD",
+    "currencySymbol": "SRD",
+    "languages": [
+      "nl"
+    ],
+    "callingCode": "597",
+    "flag": "https://flagcdn.com/w320/sr.png"
+  },
+  {
+    "name": "Swaziland",
+    "code": "SZ",
+    "capital": "Lobamba",
+    "region": "Africa",
+    "population": 1106189,
+    "currencyCode": "SZL",
+    "currencySymbol": "SZL",
+    "languages": [
+      "en",
+      "ss"
+    ],
+    "callingCode": "268",
+    "flag": "https://flagcdn.com/w320/sz.png"
+  },
+  {
+    "name": "Sweden",
+    "code": "SE",
+    "capital": "Stockholm",
+    "region": "Europe",
+    "population": 9737521,
+    "currencyCode": "SEK",
+    "currencySymbol": "SEK",
+    "languages": [
+      "sv"
+    ],
+    "callingCode": "46",
+    "flag": "https://flagcdn.com/w320/se.png"
+  },
+  {
+    "name": "Switzerland",
+    "code": "CH",
+    "capital": "Bern",
+    "region": "Europe",
+    "population": 8183800,
+    "currencyCode": "CHE",
+    "currencySymbol": "CHE",
+    "languages": [
+      "de",
+      "fr",
+      "it"
+    ],
+    "callingCode": "41",
+    "flag": "https://flagcdn.com/w320/ch.png"
+  },
+  {
+    "name": "Syria",
+    "code": "SY",
+    "capital": "Damascus",
+    "region": "Asia",
+    "population": 22964324,
+    "currencyCode": "SYP",
+    "currencySymbol": "SYP",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "963",
+    "flag": "https://flagcdn.com/w320/sy.png"
+  },
+  {
+    "name": "São Tomé and Príncipe",
+    "code": "ST",
+    "capital": "São Tomé",
+    "region": "Africa",
+    "population": 187356,
+    "currencyCode": "STD",
+    "currencySymbol": "STD",
+    "languages": [
+      "pt"
+    ],
+    "callingCode": "239",
+    "flag": "https://flagcdn.com/w320/st.png"
+  },
+  {
+    "name": "Taiwan",
+    "code": "TW",
+    "capital": "Taipei",
+    "region": "Asia",
+    "population": 23424615,
+    "currencyCode": "TWD",
+    "currencySymbol": "NT$",
+    "languages": [
+      "zh"
+    ],
+    "callingCode": "886",
+    "flag": "https://flagcdn.com/w320/tw.png"
+  },
+  {
+    "name": "Tajikistan",
+    "code": "TJ",
+    "capital": "Dushanbe",
+    "region": "Asia",
+    "population": 8161000,
+    "currencyCode": "TJS",
+    "currencySymbol": "TJS",
+    "languages": [
+      "tg",
+      "ru"
+    ],
+    "callingCode": "992",
+    "flag": "https://flagcdn.com/w320/tj.png"
+  },
+  {
+    "name": "Tanzania",
+    "code": "TZ",
+    "capital": "Dodoma",
+    "region": "Africa",
+    "population": 47421786,
+    "currencyCode": "TZS",
+    "currencySymbol": "TZS",
+    "languages": [
+      "sw",
+      "en"
+    ],
+    "callingCode": "255",
+    "flag": "https://flagcdn.com/w320/tz.png"
+  },
+  {
+    "name": "Thailand",
+    "code": "TH",
+    "capital": "Bangkok",
+    "region": "Asia",
+    "population": 64871000,
+    "currencyCode": "THB",
+    "currencySymbol": "THB",
+    "languages": [
+      "th"
+    ],
+    "callingCode": "66",
+    "flag": "https://flagcdn.com/w320/th.png"
+  },
+  {
+    "name": "The Bahamas",
+    "code": "BS",
+    "capital": "Nassau",
+    "region": "Americas",
+    "population": 319031,
+    "currencyCode": "BSD",
+    "currencySymbol": "BSD",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "1242",
+    "flag": "https://flagcdn.com/w320/bs.png"
+  },
+  {
+    "name": "The Gambia",
+    "code": "GM",
+    "capital": "Banjul",
+    "region": "Africa",
+    "population": 1882450,
+    "currencyCode": "GMD",
+    "currencySymbol": "GMD",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "220",
+    "flag": "https://flagcdn.com/w320/gm.png"
+  },
+  {
+    "name": "Togo",
+    "code": "TG",
+    "capital": "Lomé",
+    "region": "Africa",
+    "population": 6993000,
+    "currencyCode": "XOF",
+    "currencySymbol": "F CFA",
+    "languages": [
+      "fr"
+    ],
+    "callingCode": "228",
+    "flag": "https://flagcdn.com/w320/tg.png"
+  },
+  {
+    "name": "Tonga",
+    "code": "TO",
+    "capital": "Nuku'alofa",
+    "region": "Oceania",
+    "population": 103252,
+    "currencyCode": "TOP",
+    "currencySymbol": "TOP",
+    "languages": [
+      "en",
+      "to"
+    ],
+    "callingCode": "676",
+    "flag": "https://flagcdn.com/w320/to.png"
+  },
+  {
+    "name": "Trinidad and Tobago",
+    "code": "TT",
+    "capital": "Port of Spain",
+    "region": "Americas",
+    "population": 1328019,
+    "currencyCode": "TTD",
+    "currencySymbol": "TTD",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "1868",
+    "flag": "https://flagcdn.com/w320/tt.png"
+  },
+  {
+    "name": "Tunisia",
+    "code": "TN",
+    "capital": "Tunis",
+    "region": "Africa",
+    "population": 10982754,
+    "currencyCode": "TND",
+    "currencySymbol": "TND",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "216",
+    "flag": "https://flagcdn.com/w320/tn.png"
+  },
+  {
+    "name": "Turkey",
+    "code": "TR",
+    "capital": "Ankara",
+    "region": "Asia",
+    "population": 76667864,
+    "currencyCode": "TRY",
+    "currencySymbol": "TRY",
+    "languages": [
+      "tr"
+    ],
+    "callingCode": "90",
+    "flag": "https://flagcdn.com/w320/tr.png"
+  },
+  {
+    "name": "Turkmenistan",
+    "code": "TM",
+    "capital": "Ashgabat",
+    "region": "Asia",
+    "population": 5838064,
+    "currencyCode": "TMT",
+    "currencySymbol": "TMT",
+    "languages": [
+      "tk",
+      "ru"
+    ],
+    "callingCode": "993",
+    "flag": "https://flagcdn.com/w320/tm.png"
+  },
+  {
+    "name": "Tuvalu",
+    "code": "TV",
+    "capital": "Funafuti",
+    "region": "Oceania",
+    "population": 11323,
+    "currencyCode": "AUD",
+    "currencySymbol": "A$",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "688",
+    "flag": "https://flagcdn.com/w320/tv.png"
+  },
+  {
+    "name": "Uganda",
+    "code": "UG",
+    "capital": "Kampala",
+    "region": "Africa",
+    "population": 34856813,
+    "currencyCode": "UGX",
+    "currencySymbol": "UGX",
+    "languages": [
+      "en",
+      "sw"
+    ],
+    "callingCode": "256",
+    "flag": "https://flagcdn.com/w320/ug.png"
+  },
+  {
+    "name": "Ukraine",
+    "code": "UA",
+    "capital": "Kiev",
+    "region": "Europe",
+    "population": 42973696,
+    "currencyCode": "UAH",
+    "currencySymbol": "UAH",
+    "languages": [
+      "uk"
+    ],
+    "callingCode": "380",
+    "flag": "https://flagcdn.com/w320/ua.png"
+  },
+  {
+    "name": "United Arab Emirates",
+    "code": "AE",
+    "capital": "Abu Dhabi",
+    "region": "Asia",
+    "population": 9446000,
+    "currencyCode": "AED",
+    "currencySymbol": "AED",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "971",
+    "flag": "https://flagcdn.com/w320/ae.png"
+  },
+  {
+    "name": "United Kingdom",
+    "code": "GB",
+    "capital": "London",
+    "region": "Europe",
+    "population": 69487000,
+    "currencyCode": "GBP",
+    "currencySymbol": "£",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "+44",
+    "flag": "https://flagcdn.com/w320/gb.png"
+  },
+  {
+    "name": "United States",
+    "code": "US",
+    "capital": "Washington D.C.",
+    "region": "Americas",
+    "population": 319259000,
+    "currencyCode": "USD",
+    "currencySymbol": "$",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "1",
+    "flag": "https://flagcdn.com/w320/us.png"
+  },
+  {
+    "name": "Uruguay",
+    "code": "UY",
+    "capital": "Montevideo",
+    "region": "Americas",
+    "population": 3404189,
+    "currencyCode": "UYI",
+    "currencySymbol": "UYI",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "598",
+    "flag": "https://flagcdn.com/w320/uy.png"
+  },
+  {
+    "name": "Uzbekistan",
+    "code": "UZ",
+    "capital": "Tashkent",
+    "region": "Asia",
+    "population": 30492800,
+    "currencyCode": "UZS",
+    "currencySymbol": "UZS",
+    "languages": [
+      "uz",
+      "ru"
+    ],
+    "callingCode": "998",
+    "flag": "https://flagcdn.com/w320/uz.png"
+  },
+  {
+    "name": "Vanuatu",
+    "code": "VU",
+    "capital": "Port Vila",
+    "region": "Oceania",
+    "population": 264652,
+    "currencyCode": "VUV",
+    "currencySymbol": "VUV",
+    "languages": [
+      "bi",
+      "en",
+      "fr"
+    ],
+    "callingCode": "678",
+    "flag": "https://flagcdn.com/w320/vu.png"
+  },
+  {
+    "name": "Venezuela",
+    "code": "VE",
+    "capital": "Caracas",
+    "region": "Americas",
+    "population": 30206307,
+    "currencyCode": "VEF",
+    "currencySymbol": "VEF",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "58",
+    "flag": "https://flagcdn.com/w320/ve.png"
+  },
+  {
+    "name": "Vietnam",
+    "code": "VN",
+    "capital": "Hanoi",
+    "region": "Asia",
+    "population": 89708900,
+    "currencyCode": "VND",
+    "currencySymbol": "₫",
+    "languages": [
+      "vi"
+    ],
+    "callingCode": "84",
+    "flag": "https://flagcdn.com/w320/vn.png"
+  },
+  {
+    "name": "Western Sahara",
+    "code": "EH",
+    "capital": "El Aaiún",
+    "region": "Africa",
+    "population": 586000,
+    "currencyCode": "MAD",
+    "currencySymbol": "MAD",
+    "languages": [
+      "es"
+    ],
+    "callingCode": "212",
+    "flag": "https://flagcdn.com/w320/eh.png"
+  },
+  {
+    "name": "Yemen",
+    "code": "YE",
+    "capital": "Sana'a",
+    "region": "Asia",
+    "population": 25956000,
+    "currencyCode": "YER",
+    "currencySymbol": "YER",
+    "languages": [
+      "ar"
+    ],
+    "callingCode": "967",
+    "flag": "https://flagcdn.com/w320/ye.png"
+  },
+  {
+    "name": "Zambia",
+    "code": "ZM",
+    "capital": "Lusaka",
+    "region": "Africa",
+    "population": 15023315,
+    "currencyCode": "ZMK",
+    "currencySymbol": "ZMK",
+    "languages": [
+      "en"
+    ],
+    "callingCode": "260",
+    "flag": "https://flagcdn.com/w320/zm.png"
+  },
+  {
+    "name": "Zimbabwe",
+    "code": "ZW",
+    "capital": "Harare",
+    "region": "Africa",
+    "population": 13061239,
+    "currencyCode": "USD",
+    "currencySymbol": "$",
+    "languages": [
+      "en",
+      "sn",
+      "nd"
+    ],
+    "callingCode": "263",
+    "flag": "https://flagcdn.com/w320/zw.png"
+  }
+]
