@@ -8,5 +8,6 @@ RUN dotnet publish -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
+EXPOSE 8080
 COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "GeoRetrievo.Api.dll"]

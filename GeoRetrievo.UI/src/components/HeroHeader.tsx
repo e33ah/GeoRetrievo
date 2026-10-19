@@ -18,7 +18,7 @@ export function HeroHeader({
       </div>
       <h1 className="hero-title">GeoRetrievo</h1>
       <p className="hero-subtitle">
-        Discover countries, capitals, populations, currencies and regional demographics in an intuitive modern interface.
+        Discover countries, capitals, populations and currencies.
       </p>
 
       {showStats && totalCountries > 0 && (

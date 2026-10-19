@@ -24,9 +24,9 @@ app.UseCors("ReactDev");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {
     app.MapOpenApi();
+    app.UseHttpsRedirection();
 }
 
-app.UseHttpsRedirection();
 
 app.MapGet("/health", () => Results.Ok(new {
     status = "healthy"
