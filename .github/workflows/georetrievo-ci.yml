@@ -40,13 +40,13 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: 'Run: BuildSolution'
-        run: ./build.cmd BuildSolution
+        run: ./build.ps1 BuildSolution
 
       - name: 'Run: ExecuteUnitTests'
-        run: ./build.cmd ExecuteUnitTests --skip BuildSolution
+        run: ./build.ps1 ExecuteUnitTests --skip BuildSolution
 
       - name: 'Run: BuildUI'
-        run: ./build.cmd BuildUI
+        run: ./build.ps1 BuildUI
 
       - name: 'Run: ExecuteUnitTestsUI'
-        run: ./build.cmd ExecuteUnitTestsUI --skip BuildUI
+        run: ./build.ps1 ExecuteUnitTestsUI --skip BuildUI
