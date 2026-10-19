@@ -1,3 +1,7 @@
 <Solution>
-  <Project Path="../GeoRetrievo.Api/GeoRetrievo.Api.csproj" />
+  <Project Path="GeoRetrievo.Api/GeoRetrievo.Api.csproj" />
+  <Project Path="GeoRetrievo.Pipeline/GeoRetrievo.Pipeline.csproj">
+    <Build Project="false" />
+  </Project>
+  <Project Path="GeoRetrievo.Test/GeoRetrievo.Test.csproj" />
 </Solution>

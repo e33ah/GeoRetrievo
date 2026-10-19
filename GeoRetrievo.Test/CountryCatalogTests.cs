@@ -1,21 +1,28 @@
-using GeoRetrievo.Api.Models;
-using GeoRetrievo.Api.Services;
-using Shouldly;
-
 namespace GeoRetrievo.Test;
 
 public class CountryCatalogTests {
     [Fact]
     public void FromJsonDeserializesCountryPropertiesCaseInsensitively() {
         const string JSON = """
-            [{"name":"Canada","code":"CA","capital":"Ottawa","region":"Americas","population":38246108,"currency":"CAD","callingCode":"+1"}]
+            [{"name":"Canada","code":"CA","capital":"Ottawa","region":"Americas","population":38246108,"currencyCode":"CAD","currencySymbol":"CA$","languages":["en","fr"],"callingCode":"+1","flag":"https://flagcdn.com/w320/ca.png"}]
             """;
 
         var catalog = CountryCatalog.FromJson(JSON);
 
-        catalog.GetAll().ShouldHaveSingleItem().ShouldBe(
-            new Country("Canada", "CA", "Ottawa", "Americas", 38246108, "CAD", "+1"),
-            "Deserialized country should match the JSON data");
+        var actual = catalog.GetAll().ShouldHaveSingleItem();
+        var expected = new Country(
+            "Canada",
+            "CA",
+            "Ottawa",
+            "Americas",
+            38246108,
+            "CAD",
+            "CA$",
+            ["en", "fr"],
+            "+1",
+            "https://flagcdn.com/w320/ca.png");
+        actual.Languages.ShouldBe(expected.Languages);
+        (actual with { Languages = expected.Languages }).ShouldBe(expected, "Deserialized country should match the JSON data");
     }
 
     [Fact]
@@ -27,19 +34,21 @@ public class CountryCatalogTests {
 
     [Fact]
     public void GetByCodeReturnsMatchingCountry() {
-        var expected = new Country("Canada", "CA", "Ottawa", "Americas", 38246108, "CAD", "+1");
+        var expected = new Country("Canada", "CA", "Ottawa", "Americas", 38246108, "CAD", "CA$", ["en", "fr"], "+1", "https://flagcdn.com/w320/ca.png");
         var catalog = CountryCatalog.FromJson(
-            """[{"Name":"Canada","Code":"CA","Capital":"Ottawa","Region":"Americas","Population":38246108,"Currency":"CAD","CallingCode":"+1"}]""");
+            """[{"Name":"Canada","Code":"CA","Capital":"Ottawa","Region":"Americas","Population":38246108,"CurrencyCode":"CAD","CurrencySymbol":"CA$","Languages":["en","fr"],"CallingCode":"+1","Flag":"https://flagcdn.com/w320/ca.png"}]""");
 
         var actual = catalog.GetByCode("CA");
 
-        actual.ShouldBe(expected);
+        actual.ShouldNotBeNull();
+        actual!.Languages.ShouldBe(expected.Languages);
+        (actual with { Languages = expected.Languages }).ShouldBe(expected);
     }
 
     [Fact]
     public void GetByCodeReturnsNullWhenCodeDoesNotMatch() {
         var catalog = CountryCatalog.FromJson(
-            """[{"Name":"Canada","Code":"CA","Capital":"Ottawa","Region":"Americas","Population":38246108,"Currency":"CAD","CallingCode":"+1"}]""");
+            """[{"Name":"Canada","Code":"CA","Capital":"Ottawa","Region":"Americas","Population":38246108,"CurrencyCode":"CAD","CurrencySymbol":"CA$","Languages":["en","fr"],"CallingCode":"+1","Flag":"https://flagcdn.com/w320/ca.png"}]""");
 
         catalog.GetByCode("US").ShouldBeNull();
         catalog.GetByCode("ca").ShouldBeNull();

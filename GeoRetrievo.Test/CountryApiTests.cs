@@ -1,9 +1,3 @@
-using System.Net;
-using System.Net.Http.Json;
-using GeoRetrievo.Api.Models;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Shouldly;
-
 namespace GeoRetrievo.Test;
 
 public class CountryApiTests(WebApplicationFactory<Program> factory) : IClassFixture<WebApplicationFactory<Program>> {
@@ -16,7 +10,9 @@ public class CountryApiTests(WebApplicationFactory<Program> factory) : IClassFix
         response.StatusCode.ShouldBe(HttpStatusCode.OK);
         var result = await response.Content.ReadFromJsonAsync<HealthResponse>(
             TestContext.Current.CancellationToken);
-        result?.Status.ShouldBe("healthy");
+
+        result.ShouldNotBeNull();
+        result.Status.ShouldBe("healthy");
     }
 
     [Fact]
@@ -39,7 +35,20 @@ public class CountryApiTests(WebApplicationFactory<Program> factory) : IClassFix
         var country = await response.Content.ReadFromJsonAsync<Country>(
             TestContext.Current.CancellationToken);
 
-        country.ShouldBe(new Country("Canada", "CA", "Ottawa", "Americas", 38246108, "CAD", "+1"));
+        var expected = new Country(
+            "Canada",
+            "CA",
+            "Ottawa",
+            "Americas",
+            35540419,
+            "CAD",
+            "CA$",
+            ["en", "fr"],
+            "1",
+            "https://flagcdn.com/w320/ca.png");
+        country.ShouldNotBeNull();
+        country!.Languages.ShouldBe(expected.Languages);
+        (country with { Languages = expected.Languages }).ShouldBe(expected);
     }
 
     [Theory]
@@ -47,14 +56,14 @@ public class CountryApiTests(WebApplicationFactory<Program> factory) : IClassFix
     [InlineData("123")]
     [InlineData("CAN")]
     [InlineData("ca")]
-    [InlineData("NZ")]
+    [InlineData("XX")]
     public async Task CountryByCodeEndpointReturnsNotFoundForInvalidOrMissingCode(string code) {
         using var response = await client.GetAsync(
             $"/countries/{code}",
             TestContext.Current.CancellationToken);
 
         response.StatusCode.ShouldBe(HttpStatusCode.NotFound);
-        var body = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
+        string body = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
         body.ShouldBeEmpty();
     }
 

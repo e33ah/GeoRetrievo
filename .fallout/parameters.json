@@ -1,0 +1,5 @@
+{
+  "$schema": "build.schema.json",
+  "Solution": "GeoRetrievo.Api.slnx",
+  "BuildProjectFile": "GeoRetrievo.Pipeline\\GeoRetrievo.Pipeline.csproj"
+}
