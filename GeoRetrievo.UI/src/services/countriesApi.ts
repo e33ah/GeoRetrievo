@@ -3,6 +3,16 @@ import type { Country } from "../types/Country";
 export const API_URL =
   import.meta.env.VITE_API_BASE_URL ?? "http://localhost:5294";
 
+export class ApiResponseError extends Error {
+  readonly status: number;
+
+  constructor(status: number) {
+    super(`API returned HTTP ${status}`);
+    this.name = "ApiResponseError";
+    this.status = status;
+  }
+}
+
 export function parseCountry(data: unknown): Country | null {
   if (!data || typeof data !== "object") return null;
   const record = data as Record<string, unknown>;
@@ -58,7 +68,7 @@ export async function fetchCountries(signal?: AbortSignal): Promise<Country[]> {
   });
 
   if (!response.ok) {
-    throw new Error(`API returned HTTP ${response.status}`);
+    throw new ApiResponseError(response.status);
   }
 
   const data: unknown = await response.json();

@@ -58,6 +58,10 @@ The application uses Vite environment variables prefixed with `VITE_`.
 > [!NOTE]
 > The backend API has a CORS policy configured in `Program.cs` that explicitly permits requests from `http://localhost:5173`. If you run Vite on a different port, update the CORS policy in the backend accordingly.
 
+### UI diagnostics
+
+Failed country-list requests are written to the browser console as structured error events. In local development (`import.meta.env.DEV`), the UI also logs request start, success (with country count), and failure events, including the retry attempt number. Events include a timestamp, event name, and safe diagnostic context; raw exception messages, request URLs, and country data are intentionally omitted. User-facing errors remain separate from diagnostic details. Browser-console logging is not a production monitoring service, so connect an error-monitoring provider if production error collection is needed.
+
 ---
 
 ## 💻 Developer Scripts & Workflow
