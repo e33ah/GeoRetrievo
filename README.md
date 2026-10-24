@@ -18,19 +18,24 @@ GeoRetrievo is a full-stack application for exploring country data across the wo
 - Test project: `GeoRetrievo.Test`
   - Covers API and service behaviour for the backend
 
-
-
 ## Getting started
+
+### Typical workflow
+
+1. Start the backend API.
+2. Start the frontend client.
+3. Search, filter, and browse the country catalog.
+4. Use the test project to validate the API and service logic.
 
 ### 1. Run the API
 
-```bash
+```sh
 dotnet run --project GeoRetrievo.Api
 ```
 
 ### 2. Run the UI
 
-```bash
+```sh
 cd GeoRetrievo.UI
 npm install
 npm run dev
@@ -38,40 +43,47 @@ npm run dev
 
 Then open the local Vite URL in your browser, typically `http://localhost:5173`.
 
-## Typical workflow
+### 3. Run tests
 
-1. Start the backend API.
-2. Start the frontend client.
-3. Search, filter, and browse the country catalog.
-4. Use the test project to validate the API and service logic.
+```sh
+dotnet run --project GeoRetrievo.test
 
-
-## Run the API in local Docker
-
-On Windows, first authenticate for local Application Default Credentials:
-
-```powershell
-gcloud auth application-default login
-docker compose up --build
+cd GeoRetrievo.UI
+npm run test:run
 ```
 
-The Compose file mounts the local ADC credentials read-only and serves the API
-at `http://localhost:5294`, which matches the UI's default API URL. The default
-bucket is `country_data_01` and the default object is `countries.json`. Override
-either for the current PowerShell session if needed:
+## Run the full app in Docker Desktop
+
+These commands build and run the API and UI as separate local Docker
+containers. They use the country data file included in the API image and do
+not require Google Cloud authentication. Run the API in one PowerShell
+terminal from the repository root:
 
 ```powershell
-$env:COUNTRY_DATA_BUCKET = "your-bucket-name"
-$env:COUNTRY_DATA_OBJECT = "path/to/countries.json"
-docker compose up --build
+docker build -t georetrievo-api:local .\GeoRetrievo.Api
+docker run --rm -p 5294:8080 `
+  -e "Cors__AllowedOrigins__0=http://localhost:8080" `
+  georetrievo-api:local
 ```
 
-The authenticated Google account must have permission to read the object. Do
-not add ADC credentials to the repository or container image.
+In a second PowerShell terminal, also from the repository root, build and run
+the UI:
 
-**Compose and `docker run` behave differently by default:** Compose supplies
-`CountryData__Bucket` and `CountryData__Object`, so it loads from Cloud Storage.
-A plain `docker run` does not read `compose.yaml`; unless you pass
-`CountryData__Bucket` yourself, the API uses the local `Data/countries.json`
-file included in the image. To use Cloud Storage with `docker run`, pass those
-configuration variables and provide Google credentials inside the container.
+```powershell
+docker build `
+  --build-arg VITE_API_BASE_URL=http://localhost:5294 `
+  -t georetrievo-ui:local `
+  .\GeoRetrievo.UI
+docker run --rm -p 8080:8080 georetrievo-ui:local
+```
+
+Open [http://localhost:8080](http://localhost:8080). The browser loads the UI
+from port `8080` and calls the API through `http://localhost:5294`; the API's
+CORS setting above allows that browser origin. Keep both terminal processes
+running while using the app, and press **Ctrl+C** in each terminal to stop its
+container.
+
+This direct `docker run` setup does not read `compose.yaml`. Compose is
+configured to mount local Application Default Credentials and load country
+data from Cloud Storage; use that route only if you want the containerized API
+to read from GCS.

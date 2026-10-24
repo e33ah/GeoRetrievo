@@ -16,7 +16,7 @@ cd GeoRetrievo.UI
 # 3. Install dependencies
 npm install
 
-# 4. (Optional) Ensure .env is present
+# 4. (Optional) Create a local .env override
 cp .env.example .env
 
 # 5. Start the Vite dev server
@@ -44,16 +44,23 @@ Before setting up the project, ensure you have the following installed on your m
 
 The application uses Vite environment variables prefixed with `VITE_`.
 
-1. Copy `.env.example` to create your local `.env` if not already present:
+Vite loads the API URL from a mode-specific file:
+
+| File | Used by | API URL |
+| :--- | :--- | :--- |
+| `.env.development` | `npm run dev` | `http://localhost:5294` |
+| `.env.production` | `npm run build` | `https://georetrievo-api-g64urgyysq-uc.a.run.app` |
+
+To override the API URL locally, copy `.env.example` to `.env`:
    ```bash
    cp .env.example .env
    ```
 
-2. Configuration variables:
+Configuration variables:
 
-| Variable | Default Value | Description |
+| Variable | Value | Description |
 | :--- | :--- | :--- |
-| `VITE_API_BASE_URL` | `http://localhost:5294` | The HTTP root of the .NET backend API (`GeoRetrievo.Api`). |
+| `VITE_API_BASE_URL` | Mode-specific | The HTTP root of the .NET backend API (`GeoRetrievo.Api`). The production value is embedded in the built UI. |
 
 > [!NOTE]
 > The backend API has a CORS policy configured in `Program.cs` that explicitly permits requests from `http://localhost:5173`. If you run Vite on a different port, update the CORS policy in the backend accordingly.
@@ -74,6 +81,25 @@ All commands are run from the `GeoRetrievo.UI` directory:
 | **Type Check & Build** | `npm run build` | Runs the TypeScript compiler in build mode (`tsc -b`), then bundles optimized production assets into `dist/`. |
 | **Linting** | `npm run lint` | Runs ESLint across all `.ts` and `.tsx` source files using the flat config in `eslint.config.js`. |
 | **Preview Build** | `npm run preview` | Spins up a local web server to inspect the compiled output in `dist/`. |
+
+### Build and run the UI container
+
+From the repository root, build the production image and run it locally:
+
+```powershell
+docker build `
+  --build-arg VITE_API_BASE_URL=https://georetrievo-api-g64urgyysq-uc.a.run.app `
+  -t georetrievo-ui:local `
+  .\GeoRetrievo.UI
+docker run --rm -p 8080:8080 georetrievo-ui:local
+```
+
+Open [http://localhost:8080](http://localhost:8080). The image uses a
+multi-stage build: Node.js compiles the Vite app, then Nginx serves the static
+files on port `8080` with SPA route fallback. `VITE_API_BASE_URL` is baked into
+the frontend at build time; pass the deployed API URL when building for Cloud
+Run. Add the deployed UI origin to the API's `cors_allowed_origins` Terraform
+variable before making browser requests to the API.
 
 ---
 
