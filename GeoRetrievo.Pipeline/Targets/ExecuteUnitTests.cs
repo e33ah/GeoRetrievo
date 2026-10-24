@@ -1,6 +1,3 @@
-using System.Runtime.CompilerServices;
-using System.Text;
-
 namespace GeoRetrievo.Pipeline;
 
 public partial class Build : FalloutBuild {
@@ -9,7 +6,7 @@ public partial class Build : FalloutBuild {
         .Executes(() => {
             Log.Information("Executing unit tests for GeoRetrievo solution...");
             DotNetTasks.DotNetRun(s => s
-                .SetProjectFile(testProjectFile)
+                .SetProjectFile(TestProjectFile)
                 .SetConfiguration(Configuration)
                 .SetNoBuild(true)
             );

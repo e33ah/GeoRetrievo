@@ -146,7 +146,7 @@ function App() {
 
       {/* Footer */}
       <footer className="footer">
-        <p>GeoRetrievo — Modern Global Country Intelligence</p>
+        <p>&copy; 2026 GeoRetrievo</p>
       </footer>
     </main>
   );
