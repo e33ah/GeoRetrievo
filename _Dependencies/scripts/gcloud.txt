@@ -23,7 +23,8 @@ gcloud storage buckets add-iam-policy-binding \
 gcloud services enable \
   run.googleapis.com \
   cloudbuild.googleapis.com \
-  artifactregistry.googleapis.com 
+  artifactregistry.googleapis.com \
+  cloudresourcemanager.googleapis.com
 
 # create bucket for terraform state
 gcloud storage buckets create gs://georetrievo-terraform-state --location=US-CENTRAL1 --uniform-bucket-level-access  --public-access-prevention
