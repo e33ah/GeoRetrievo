@@ -62,7 +62,7 @@ jobs:
 
       - name: 'Run: ExecuteUnitTests'
         run: bash ./build.sh ExecuteUnitTests --skip BuildSolution
-        
+
       - name: 'Run: BuildAPIImage'
         run: bash ./build.sh BuildAPIImage --skip BuildSolution ExecuteUnitTests
 
@@ -71,3 +71,18 @@ jobs:
 
       - name: 'Run: ReleaseAPI'
         run: bash ./build.sh ReleaseAPI --skip BuildSolution ExecuteUnitTests BuildAPIImage PushAPIImage
+
+      - name: 'Run: BuildUI'
+        run: bash ./build.sh BuildUI
+
+      - name: 'Run: ExecuteUnitTestsUI'
+        run: bash ./build.sh ExecuteUnitTestsUI --skip BuildUI
+
+      - name: 'Run: BuildUIImage'
+        run: bash ./build.sh BuildUIImage --skip BuildUI ExecuteUnitTestsUI --build-for-release true
+
+      - name: 'Run: PushUIImage'
+        run: bash ./build.sh PushUIImage --skip BuildUI ExecuteUnitTestsUI BuildUIImage
+
+      - name: 'Run: ReleaseUI'
+        run: bash ./build.sh ReleaseUI --skip BuildUI ExecuteUnitTestsUI BuildUIImage PushUIImage

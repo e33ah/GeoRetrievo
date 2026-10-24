@@ -57,8 +57,8 @@ Frontend tests, linting, and production builds are documented in the
 ## CI/CD
 
 Fallout orchestrates the build pipeline. GitHub Actions runs backend and UI
-builds and tests on pushes and pull requests; a separate workflow builds the
-API container image. 
+builds and tests on pushes and pull requests; a separate workflow deploys the
+API and UI containers to Cloud Run.
 
 CI builds are triggered on pushes to the `main` branch and on pull requests.
 They can also be run locally:
@@ -66,8 +66,8 @@ They can also be run locally:
 ./build.sh GeoRetrievoCI
 ```
 
-API releases are manually triggered and deploy the image
-to Google Cloud Run. See the
+Application releases are manually triggered and deploy the API and UI images
+to separate Google Cloud Run services. See the
 [infrastructure guide](_Dependencies/infrastructure/terraform/README.md#automated-release)
 for deployment requirements and steps.
 

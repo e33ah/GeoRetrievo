@@ -6,6 +6,11 @@ locals {
     "run.googleapis.com",
     "storage.googleapis.com",
   ])
+
+  api_cors_allowed_origins = var.ui_container_image == "" ? var.cors_allowed_origins : concat(
+    var.cors_allowed_origins,
+    [google_cloud_run_v2_service.ui[0].uri],
+  )
 }
 
 resource "google_project_service" "required" {
@@ -100,7 +105,7 @@ resource "google_cloud_run_v2_service" "api" {
       }
 
       dynamic "env" {
-        for_each = var.cors_allowed_origins
+        for_each = local.api_cors_allowed_origins
 
         content {
           name  = "Cors__AllowedOrigins__${env.key}"
@@ -127,6 +132,61 @@ resource "google_cloud_run_v2_service_iam_member" "public_invoker" {
   project  = var.project_id
   location = var.region
   name     = google_cloud_run_v2_service.api[0].name
+  role     = "roles/run.invoker"
+  member   = "allUsers"
+}
+
+resource "google_cloud_run_v2_service" "ui" {
+  count = var.ui_container_image == "" ? 0 : 1
+
+  project             = var.project_id
+  name                = var.ui_service_name
+  location            = var.region
+  ingress             = "INGRESS_TRAFFIC_ALL"
+  deletion_protection = false
+
+  template {
+    max_instance_request_concurrency = 80
+    timeout                          = "300s"
+    execution_environment            = "EXECUTION_ENVIRONMENT_GEN1"
+
+    scaling {
+      min_instance_count = 0
+      max_instance_count = var.ui_max_instance_count
+    }
+
+    containers {
+      image = var.ui_container_image
+
+      ports {
+        container_port = 8080
+      }
+
+      resources {
+        cpu_idle = true
+
+        limits = {
+          cpu    = "0.25"
+          memory = var.ui_memory
+        }
+      }
+    }
+  }
+
+  traffic {
+    percent = 100
+    type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+  }
+
+  depends_on = [google_project_service.required]
+}
+
+resource "google_cloud_run_v2_service_iam_member" "ui_public_invoker" {
+  count = var.ui_container_image != "" && var.ui_allow_unauthenticated ? 1 : 0
+
+  project  = var.project_id
+  location = var.region
+  name     = google_cloud_run_v2_service.ui[0].name
   role     = "roles/run.invoker"
   member   = "allUsers"
 }

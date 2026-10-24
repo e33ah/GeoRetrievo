@@ -2,7 +2,7 @@ using System.Diagnostics;
 
 namespace GeoRetrievo.Api.Services;
 
-public sealed class CountryCatalogLoader(IConfiguration configuration,ICountryDataSource countryDataSource,ILogger<CountryCatalogLoader> logger) {
+public sealed class CountryCatalogLoader(IConfiguration configuration, ICountryDataSource countryDataSource, ILogger<CountryCatalogLoader> logger) {
     private const string DEFAULT_JSON_FILE_NAME = "countries.json";
     private readonly IConfiguration configuration = configuration;
     private readonly ICountryDataSource countryDataSource = countryDataSource;
@@ -38,7 +38,7 @@ public sealed class CountryCatalogLoader(IConfiguration configuration,ICountryDa
             logger.LogDebug("Country catalog load was cancelled from {Source}", source);
             throw;
         } catch (Exception exception) {
-            logger.LogError( exception, "Failed to load country catalog from {Source}, bucket {Bucket}, object {ObjectName}", source, bucket, objectName);
+            logger.LogError(exception, "Failed to load country catalog from {Source}, bucket {Bucket}, object {ObjectName}", source, bucket, objectName);
             throw;
         }
     }

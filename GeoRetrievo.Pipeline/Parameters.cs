@@ -2,11 +2,14 @@
 
 public partial class Build : FalloutBuild {
 
-    [Parameter("Docker image name")]
-    readonly string ApiImageName = "georetrievo-api";
+    [Parameter("Allow unauthenticated browser access during release")]
+    readonly bool AllowUnauthenticated = true;
 
     [Parameter("Artifact Registry repository ID")]
     readonly string ArtifactRegistryRepository = "georetrievo";
+
+    [Parameter("Build the UI image with the deployed API URL for release")]
+    readonly bool BuildForRelease;
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
@@ -23,11 +26,20 @@ public partial class Build : FalloutBuild {
         ?? Environment.GetEnvironmentVariable("GCP_REGION")
         ?? "us-central1";
 
+    [Parameter("Docker image name")]
+    readonly string ImageNameApi = "georetrievo-api";
+
+    [Parameter("UI Docker image name")]
+    readonly string ImageNameUI = "georetrievo-ui";
+
     [Parameter("Container image tag; defaults to GITHUB_SHA or the current Git commit")]
     readonly string ImageTag = Environment.GetEnvironmentVariable("GITHUB_SHA") ?? string.Empty;
 
     [Parameter("Local Docker image name and tag")]
     readonly string LocalApiImage = "georetrievo-api:local";
+
+    [Parameter("Local UI Docker image name and tag")]
+    readonly string LocalUiImage = "georetrievo-ui:local";
 
     [Parameter("GCS bucket used for Terraform remote state")]
     readonly string TerraformStateBucket =

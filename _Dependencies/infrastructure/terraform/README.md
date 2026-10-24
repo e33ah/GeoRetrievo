@@ -1,10 +1,10 @@
-# API infrastructure
+# Google Cloud infrastructure
 
 This Terraform configuration provisions the Google Cloud resources used by
-the GeoRetrievo API: required APIs, an Artifact Registry repository, access
-for the existing runtime service account to read the country-data bucket,
-and (after an image is supplied) a Cloud Run service. It does not create the
-runtime service account or the country-data bucket.
+GeoRetrievo: required APIs, an Artifact Registry repository, access for the
+existing API runtime service account to read the country-data bucket, and
+(after images are supplied) separate Cloud Run services for the API and UI.
+It does not create the runtime service account or the country-data bucket.
 
 ## Prerequisites
 
@@ -51,8 +51,8 @@ terraform import google_storage_bucket_iam_member.country_data_reader `
 ```
 
 The initial apply enables the required APIs, grants the bucket access, and
-creates the Artifact Registry repository. Cloud Run is not created until
-`container_image` is set:
+creates the Artifact Registry repository. Cloud Run services are created once
+their corresponding `container_image` or `ui_container_image` is set:
 
 ```powershell
 terraform plan
@@ -80,16 +80,17 @@ push a new image, update `container_image`, and apply again.
 
 ## Access and operating costs
 
-The API is private by default. Set `allow_unauthenticated = true` only when
-public invocation is intended. Set `cors_allowed_origins` to the exact UI
-origin (scheme, host, and optional port; no path or trailing slash). Remove
-the localhost origin when it is no longer needed.
+The API is private by default. The release pipeline makes it publicly
+invokable because the public browser UI calls the API directly; catalogue
+data is therefore available to unauthenticated callers. The UI is public by
+default. Terraform automatically configures API CORS with the deployed UI
+origin; `cors_allowed_origins` can add other origins when required.
 
-Cloud Run scales to zero, uses request-based CPU allocation, and allows at
-most one instance with one request at a time per instance, 0.25 vCPU, and
-256 MiB of memory. These are low-cost starting settings for a small API, not
-a guarantee of zero charges; the instance and concurrency limits also
-constrain throughput.
+Both services scale to zero and use request-based CPU allocation. The API
+allows one request at a time per instance with 0.25 vCPU and 256 MiB of
+memory; the UI allows up to 80 concurrent requests per instance with 0.25
+vCPU and 128 MiB. These are low-cost starting settings, not a guarantee of
+zero charges.
 
 Artifact Registry deletes untagged images older than 14 days; tagged images
 are retained. Cloud Build, storage, logging, and other Google Cloud services
@@ -109,15 +110,17 @@ permissions needed to provision infrastructure, push images, and deploy
 Cloud Run.
 
 The separate `PlanRelease` target formats, validates, and plans without
-applying. The CD workflow runs `ReleaseAPI`, which builds and pushes a
-commit-tagged image, applies Terraform, and prints the API URL. The CI
-workflow runs on pushes, pull requests, and manual dispatches to build and
-test the application. Run deployment targets from the repository root:
+applying. The CD workflow runs `ReleaseUI`, which builds and pushes the API
+image, deploys the API, builds the UI image with the deployed API URL, deploys
+the public UI, and updates API CORS to allow the UI origin. Provision the API
+infrastructure before the first release. The CI workflow runs on pushes,
+pull requests, and manual dispatches to build and test the application. Run
+deployment targets from the repository root:
 
 ```powershell
 .\build.ps1 ProvisionAPIInfrastructure
 .\build.ps1 PlanRelease
-.\build.ps1 ReleaseAPI
+.\build.ps1 ReleaseUI
 ```
 
 The pipeline defaults to Google Cloud project `georetrievo`, region

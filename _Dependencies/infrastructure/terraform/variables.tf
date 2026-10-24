@@ -14,6 +14,12 @@ variable "service_name" {
   default     = "georetrievo-api"
 }
 
+variable "ui_service_name" {
+  description = "Cloud Run service name for the web UI."
+  type        = string
+  default     = "georetrievo-ui"
+}
+
 variable "repository_id" {
   description = "Artifact Registry Docker repository ID."
   type        = string
@@ -32,6 +38,12 @@ variable "container_image" {
   default     = ""
 }
 
+variable "ui_container_image" {
+  description = "Full Artifact Registry image URI for the UI. Leave empty until the UI image is pushed."
+  type        = string
+  default     = ""
+}
+
 variable "country_data_bucket" {
   description = "Existing Cloud Storage bucket containing the country catalog."
   type        = string
@@ -45,9 +57,9 @@ variable "country_data_object" {
 }
 
 variable "cors_allowed_origins" {
-  description = "Allowed browser origins. Replace localhost with the deployed UI origin when the UI is hosted."
+  description = "Additional allowed browser origins. The deployed UI origin is added automatically when the UI is deployed."
   type        = list(string)
-  default     = ["http://localhost:5173"]
+  default     = []
 
   validation {
     condition     = alltrue([for origin in var.cors_allowed_origins : can(regex("^https?://[^/]+$", origin))])
@@ -56,9 +68,15 @@ variable "cors_allowed_origins" {
 }
 
 variable "allow_unauthenticated" {
-  description = "Whether to allow public invocation of the Cloud Run service."
+  description = "Whether to allow public invocation of the API Cloud Run service."
   type        = bool
   default     = false
+}
+
+variable "ui_allow_unauthenticated" {
+  description = "Whether to allow public invocation of the UI Cloud Run service."
+  type        = bool
+  default     = true
 }
 
 variable "max_instance_count" {
@@ -72,8 +90,25 @@ variable "max_instance_count" {
   }
 }
 
+variable "ui_max_instance_count" {
+  description = "Maximum number of Cloud Run UI instances."
+  type        = number
+  default     = 2
+
+  validation {
+    condition     = var.ui_max_instance_count >= 1
+    error_message = "ui_max_instance_count must be at least 1."
+  }
+}
+
 variable "memory" {
   description = "Memory limit for each Cloud Run instance. Increase if the application runs out of memory."
   type        = string
   default     = "256Mi"
+}
+
+variable "ui_memory" {
+  description = "Memory limit for each Cloud Run UI instance."
+  type        = string
+  default     = "128Mi"
 }

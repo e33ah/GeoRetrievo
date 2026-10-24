@@ -14,14 +14,17 @@ public partial class Build : FalloutBuild {
             Log.Information("Validating Terraform configuration");
             RunTerraform(["validate"]);
 
-            Log.Information("Creating release plan for image {Image}", GetApiImageUri());
-            RunTerraform([
+            Log.Information("Creating release plan for API image {ApiImage} and UI image {UiImage}", GetApiImageUri(), GetUiImageUri());
+            var arguments = new List<string> {
                 "plan",
                 "-input=false",
                 $"-var=project_id={GoogleCloudProjectId}",
                 $"-var=region={GoogleCloudRegion}",
                 $"-var=container_image={GetApiImageUri()}",
-            ]);
+                $"-var=ui_container_image={GetUiImageUri()}",
+                $"-var=allow_unauthenticated={AllowUnauthenticated.ToString().ToLowerInvariant()}",
+            };
+            RunTerraform(arguments);
 
             Log.Information("Terraform release plan completed; no changes were applied");
         });

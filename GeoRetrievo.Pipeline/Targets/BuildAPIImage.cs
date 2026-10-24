@@ -9,11 +9,7 @@ public partial class Build : FalloutBuild {
                 return;
             }
 
-            Log.Information("Building API Docker image {Image} from {DockerContext}", LocalApiImage, ApiDockerContext);
-            DockerTasks.DockerBuild(settings => settings
-                .SetFile((ApiDockerContext / "Dockerfile").ToString())
-                .SetTag(LocalApiImage)
-                .SetPath(ApiDockerContext.ToString()));
+            BuildDockerImage(ApiDockerContext, LocalApiImage);
             Log.Information("Built API Docker image {Image}", LocalApiImage);
         });
 
@@ -31,8 +27,7 @@ public partial class Build : FalloutBuild {
         try {
             process = Process.Start(startInfo)
                 ?? throw new InvalidOperationException("Could not start 'docker info'.");
-        }
-        catch (Win32Exception exception) {
+        } catch (Win32Exception exception) {
             Log.Debug("Docker CLI could not be started: {Error}", exception.Message);
             return false;
         }

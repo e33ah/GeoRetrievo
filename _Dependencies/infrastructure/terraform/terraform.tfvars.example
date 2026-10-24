@@ -1,6 +1,8 @@
 project_id              = "your-google-cloud-project-id"
 region                  = "us-central1"
 country_data_bucket     = "country_data_01"
-container_image         = ""
-allow_unauthenticated   = false
-cors_allowed_origins    = ["http://localhost:5173"]
+container_image          = ""
+ui_container_image       = ""
+allow_unauthenticated    = false
+ui_allow_unauthenticated = true
+cors_allowed_origins     = ["http://localhost:5173"]

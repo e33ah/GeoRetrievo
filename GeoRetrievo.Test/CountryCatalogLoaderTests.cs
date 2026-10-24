@@ -31,7 +31,7 @@ public class CountryCatalogLoaderTests {
             })
             .Build();
         var dataSource = new FakeCountryDataSource(JSON);
-        var loader = new CountryCatalogLoader( configuration, dataSource, NullLogger<CountryCatalogLoader>.Instance);
+        var loader = new CountryCatalogLoader(configuration, dataSource, NullLogger<CountryCatalogLoader>.Instance);
 
         await loader.LoadAsync(TestContext.Current.CancellationToken);
 
