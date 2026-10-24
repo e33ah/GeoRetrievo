@@ -44,11 +44,23 @@ jobs:
       - name: 'Run: ExecuteUnitTests'
         run: ./build.ps1 ExecuteUnitTests --skip BuildSolution
 
-      - name: 'Run: BuildAPIImage'
-        run: ./build.ps1 BuildAPIImage --skip BuildSolution ExecuteUnitTests
-
       - name: 'Run: BuildUI'
         run: ./build.ps1 BuildUI
 
       - name: 'Run: ExecuteUnitTestsUI'
         run: ./build.ps1 ExecuteUnitTestsUI --skip BuildUI
+
+  build-api-image:
+    name: build-api-image
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: 'Setup: .NET SDK'
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: 'Run: BuildAPIImage'
+        run: bash ./build.sh BuildAPIImage --skip BuildSolution ExecuteUnitTests

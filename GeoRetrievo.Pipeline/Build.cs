@@ -4,7 +4,7 @@ namespace GeoRetrievo.Pipeline;
 
 [GitHubActions("georetrievo-ci", GitHubActionsImage.WindowsLatest, On = new[] { GitHubActionsTrigger.Push, GitHubActionsTrigger.PullRequest, GitHubActionsTrigger.WorkflowDispatch },
     InvokedTargets = new[] { nameof(BuildSolution), nameof(ExecuteUnitTests) }, AutoGenerate = false)]
-[GitHubActions("georetrievo-cd", GitHubActionsImage.WindowsLatest, On = new[] { GitHubActionsTrigger.WorkflowDispatch },
+[GitHubActions("georetrievo-cd", GitHubActionsImage.UbuntuLatest, On = new[] { GitHubActionsTrigger.WorkflowDispatch },
     InvokedTargets = new[] { nameof(ReleaseAPI) }, AutoGenerate = false)]
 public partial class Build : FalloutBuild {
     public static int Main() => Execute<Build>(x => x.GeoRetrievoCI);

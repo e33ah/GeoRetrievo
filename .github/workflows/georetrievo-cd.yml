@@ -21,7 +21,7 @@ on: [workflow_dispatch]
 jobs:
   build-and-deploy:
     name: build-and-deploy
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       id-token: write
@@ -58,16 +58,16 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: 'Run: BuildSolution'
-        run: ./build.ps1 BuildSolution
+        run: bash ./build.sh BuildSolution
 
       - name: 'Run: ExecuteUnitTests'
-        run: ./build.ps1 ExecuteUnitTests --skip BuildSolution
+        run: bash ./build.sh ExecuteUnitTests --skip BuildSolution
         
       - name: 'Run: BuildAPIImage'
-        run: ./build.ps1 BuildAPIImage --skip BuildSolution ExecuteUnitTests
+        run: bash ./build.sh BuildAPIImage --skip BuildSolution ExecuteUnitTests
 
       - name: 'Run: PushAPIImage'
-        run: ./build.ps1 PushAPIImage --skip BuildSolution ExecuteUnitTests BuildAPIImage
+        run: bash ./build.sh PushAPIImage --skip BuildSolution ExecuteUnitTests BuildAPIImage
 
       - name: 'Run: ReleaseAPI'
-        run: ./build.ps1 ReleaseAPI --skip BuildSolution ExecuteUnitTests BuildAPIImage PushAPIImage
+        run: bash ./build.sh ReleaseAPI --skip BuildSolution ExecuteUnitTests BuildAPIImage PushAPIImage
