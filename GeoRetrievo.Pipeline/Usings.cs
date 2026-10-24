@@ -1,7 +1,12 @@
-﻿global using System.ComponentModel;
+﻿global using System;
+global using System.Collections.Generic;
+global using System.ComponentModel;
+global using System.Diagnostics;
+global using System.Linq;
 global using Fallout.Common;
 global using Fallout.Common.IO;
 global using Fallout.Common.Tooling;
+global using Fallout.Common.Tools.Docker;
 global using Fallout.Common.Tools.DotNet;
 global using Fallout.Common.Tools.Npm;
 global using Fallout.Solutions;

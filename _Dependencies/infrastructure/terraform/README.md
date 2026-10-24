@@ -45,14 +45,13 @@ example variables file:
 
 ```powershell
 terraform init `
-  -backend-config="bucket=YOUR_UNIQUE_TERRAFORM_STATE_BUCKET" `
-  -backend-config="prefix=georetrievo/terraform/state"
+  -backend-config="bucket=YOUR_UNIQUE_TERRAFORM_STATE_BUCKET"
 Copy-Item terraform.tfvars.example terraform.tfvars
 ```
 
 Edit `terraform.tfvars` with the project ID and region. If the runtime service
 account and its bucket access were created manually as shown in
-`_Dependencies/scripts/gcloud.txt`, import the existing bucket IAM grant so
+`..\..\scripts\gcloud.txt`, import the existing bucket IAM grant so
 Terraform tracks it instead of trying to add an already-existing grant:
 
 ```powershell
@@ -72,7 +71,7 @@ Build and push the API image from the repository root (replace project, region,
 and tag as appropriate):
 
 ```powershell
-$image = "REGION-docker.pkg.dev/PROJECT_ID/georetrievo/api:INITIAL_TAG"
+$image = "REGION-docker.pkg.dev/PROJECT_ID/georetrievo/georetrievo-api:INITIAL_TAG"
 gcloud builds submit --tag $image .\GeoRetrievo.Api
 ```
 
@@ -105,3 +104,67 @@ in `terraform.tfvars`, and run `terraform apply` to deploy a new Cloud Run
 revision. Do not commit `terraform.tfvars`, plan files, credentials, or state.
 The GCS backend stores state remotely; the backend bucket must be protected and
 its versioning kept enabled.
+
+## Deploying with Fallout
+
+The repository pipeline has `ProvisionAPIInfrastructure`, `BuildAPIImage`,
+`PushAPIImage`, `PlanRelease`, and `ReleaseAPI` targets. `PlanRelease`
+initializes Terraform with the configured remote state, checks formatting,
+validates the configuration, and plans a release using the commit-tagged
+Artifact Registry image. It does not apply changes or save a plan file. The CI
+workflow authenticates and runs this plan only on pushes to `main` and manual
+runs against `main`; pull requests skip the cloud-authenticated plan.
+`ReleaseAPI` runs the required targets in order,
+builds the Docker image from `GeoRetrievo.Api\Dockerfile`, pushes a
+commit-based image tag to Artifact Registry, applies Terraform with that image,
+and prints the resulting API URL. `BuildAPIImage` builds locally as
+`georetrievo-api:local`, so it can run without Google Cloud settings or
+authentication when Docker Desktop is running. Start that image locally with:
+
+```powershell
+docker run --rm -p 8080:8080 georetrievo-api:local
+```
+
+To use a different local tag, set the `LocalApiImage` Fallout parameter.
+`PushAPIImage` re-tags the local image for Artifact Registry before pushing it.
+Terraform configuration is still read from this directory, including options
+such as `allow_unauthenticated` and `cors_allowed_origins`.
+
+The machine or CI runner needs Docker, the Google Cloud CLI, and Terraform
+installed, and must already be authenticated to Google Cloud with permissions
+to provision the documented resources, push to Artifact Registry, and deploy
+Cloud Run. Provision the infrastructure once before the first image push:
+`.\build.ps1 ProvisionAPIInfrastructure`. After that, `ReleaseAPI` builds and
+pushes the image and runs one Terraform apply to deploy it. For GitHub Actions,
+the `georetrievo-cd` workflow authenticates with Workload Identity Federation
+and installs Terraform and the Google Cloud CLI. It uses the Workload Identity
+Provider
+`projects/194067282433/locations/global/workloadIdentityPools/github-pool-01/providers/github-provider`
+and service account `github-deploy-svc@georetrievo.iam.gserviceaccount.com`;
+these identifiers are hard-coded in the workflow, not secrets. Configure the
+provider to trust this repository and the intended branch/environment. Grant
+the service account permission to provision the documented resources, push to
+Artifact Registry, and deploy Cloud Run. Do not store a service-account key in
+repository secrets.
+
+The workflow sets the Google Cloud CLI project to `georetrievo`. The Fallout
+pipeline defaults to project `georetrievo` and region `us-central1`, with
+optional overrides through `GOOGLE_CLOUD_PROJECT` / `GCP_PROJECT_ID` and
+`GOOGLE_CLOUD_REGION` / `GCP_REGION`. Create the
+`georetrievo-terraform-state` bucket before the first run, and import any
+existing country-data bucket IAM grant as described above before the first
+apply.
+
+The Terraform state bucket defaults to `georetrievo-terraform-state`; set
+`TERRAFORM_STATE_BUCKET` only if using a different bucket. Run the target from
+the repository root:
+
+```powershell
+.\build.ps1 PlanRelease
+```
+
+The image tag defaults to `GITHUB_SHA` in GitHub Actions and to the current
+Git commit locally. Run `.\build.ps1 ReleaseAPI` to build, push, and deploy.
+The separate targets can also be run individually:
+`ProvisionAPIInfrastructure` prepares the Terraform-managed resources,
+`BuildAPIImage` builds the image, and `PushAPIImage` pushes it.

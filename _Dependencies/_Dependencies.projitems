@@ -12,6 +12,10 @@
     <Content Include="$(MSBuildThisFileDirectory)scripts\gcloud.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)infrastructure\terraform\*.tf;$(MSBuildThisFileDirectory)infrastructure\terraform\*.tfvars.example;$(MSBuildThisFileDirectory)infrastructure\terraform\*.md;$(MSBuildThisFileDirectory)infrastructure\terraform\*.gitignore;$(MSBuildThisFileDirectory)infrastructure\terraform\*.hcl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)infrastructure\terraform\" />
     <Folder Include="$(MSBuildThisFileDirectory)docs\" />
     <Folder Include="$(MSBuildThisFileDirectory)scripts\" />
   </ItemGroup>

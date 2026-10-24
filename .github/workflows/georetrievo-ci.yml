@@ -36,7 +36,6 @@ jobs:
       - name: 'Setup: .NET SDK'
         uses: actions/setup-dotnet@v6
         with:
-
           dotnet-version: '10.0.x'
 
       - name: 'Run: BuildSolution'
@@ -44,6 +43,9 @@ jobs:
 
       - name: 'Run: ExecuteUnitTests'
         run: ./build.ps1 ExecuteUnitTests --skip BuildSolution
+
+      - name: 'Run: BuildAPIImage'
+        run: ./build.ps1 BuildAPIImage --skip BuildSolution ExecuteUnitTests
 
       - name: 'Run: BuildUI'
         run: ./build.ps1 BuildUI
