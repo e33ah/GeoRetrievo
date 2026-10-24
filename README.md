@@ -1,4 +1,8 @@
-# GeoRetrievo
+# 🌍GeoRetrievo
+
+<p align="center">
+    <img width="806" height="464" alt="GeoRetrievo" src="https://github.com/user-attachments/assets/0ae891d5-28b2-4e44-9ecb-e1c3aae46c3b" />
+</p>
 
 GeoRetrievo is a full‑stack country catalogue application built with a 
 React + TypeScript client and an ASP.NET Core API. It provides structured
