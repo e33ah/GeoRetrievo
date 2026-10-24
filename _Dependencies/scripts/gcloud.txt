@@ -1,0 +1,22 @@
+# create bucket for country data
+gcloud storage buckets create gs://country_data_01 \
+    --default-storage-class=STANDARD \
+    --location=US-CENTRAL1 \
+    --uniform-bucket-level-access \
+    --public-access-prevention
+
+# upload country data to bucket
+gcloud storage cp ./GeoRetrievo.API/Data/countries.json \
+  gs://country_data_01/countries.json
+
+# create service account for GeoRetrievo API
+gcloud iam service-accounts create georetrievo-api-svc \
+  --display-name="GeoRetrievo API svc"
+
+# grant service account access to bucket
+gcloud storage buckets add-iam-policy-binding \
+  gs://country_data_01 \
+  --member="serviceAccount:georetrievo-api-svc@georetrievo.iam.gserviceaccount.com" \
+  --role="roles/storage.objectViewer"
+
+

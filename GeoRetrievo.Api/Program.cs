@@ -2,15 +2,21 @@ using GeoRetrievo.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure the application to listen on the port specified in the PORT environment variable
+if (builder.Configuration["PORT"] is { } port) {
+    builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+}
+
 // Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
 // Add CORS policy to allow requests from the React development server
 builder.Services.AddCors(options => {
     options.AddPolicy("ReactDev", policy => {
         policy
-            .WithOrigins("http://localhost:5173")
+            .WithOrigins(
+                builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
+                    ?? ["http://localhost:5173"])
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
@@ -32,9 +38,7 @@ app.MapGet("/health", () => Results.Ok(new {
     status = "healthy"
 }));
 
-string filePath = Path.Combine(AppContext.BaseDirectory, "Data", "countries.json");
-string json = File.ReadAllText(filePath);
-var countries = CountryCatalog.FromJson(json);
+var countries = await CountryCatalogLoader.LoadAsync(builder.Configuration);
 
 app.MapGet("/countries", () => {
     var allCountries = countries.GetAll();
@@ -45,9 +49,5 @@ app.MapGet("/countries/{code}", (string code) => {
     var country = countries.GetByCode(code);
     return country is null ? Results.NotFound() : Results.Ok(country);
 });
-
-//string port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-//app.Run($"http://0.0.0.0:{port}");
-
 
 app.Run();

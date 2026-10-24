@@ -1,0 +1,17 @@
+services:
+  api:
+    build:
+      context: ./GeoRetrievo.Api
+      dockerfile: Dockerfile
+    ports:
+      - "5294:8080"
+    environment:
+      PORT: "8080"
+      CountryData__Bucket: ${COUNTRY_DATA_BUCKET:-country_data_01}
+      CountryData__Object: ${COUNTRY_DATA_OBJECT:-countries.json}
+      GOOGLE_APPLICATION_CREDENTIALS: /var/secrets/google/adc.json
+    volumes:
+      - type: bind
+        source: ${APPDATA}/gcloud/application_default_credentials.json
+        target: /var/secrets/google/adc.json
+        read_only: true

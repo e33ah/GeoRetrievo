@@ -1,13 +1,26 @@
 ﻿{
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "profiles": {
+    "local": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "http://localhost:5294",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CountryData__Bucket": "",
+        "CountryData__Object": "countries.json"
+      }
+    },
     "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
       "applicationUrl": "http://localhost:5294",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CountryData__Bucket": "country_data_01",
+        "CountryData__Object": "countries.json"
       }
     },
     "https": {
@@ -16,7 +29,9 @@
       "launchBrowser": false,
       "applicationUrl": "https://localhost:7033;http://localhost:5294",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CountryData__Bucket": "country_data_01",
+        "CountryData__Object": "countries.json"
       }
     }
   }

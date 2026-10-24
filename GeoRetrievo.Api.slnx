@@ -1,7 +1,11 @@
 <Solution>
+  <Folder Name="/SolutionItems/">
+    <File Path="README.md" />
+  </Folder>
   <Project Path="GeoRetrievo.Api/GeoRetrievo.Api.csproj" />
   <Project Path="GeoRetrievo.Pipeline/GeoRetrievo.Pipeline.csproj">
     <Build Project="false" />
   </Project>
   <Project Path="GeoRetrievo.Test/GeoRetrievo.Test.csproj" />
+  <Project Path="_Dependencies/_Dependencies.shproj" Id="b579bbf8-e922-4e35-a946-88b3a0cc8e56" />
 </Solution>

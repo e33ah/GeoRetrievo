@@ -21,6 +21,16 @@ public sealed class CountryCatalog {
         return new CountryCatalog(countries);
     }
 
+    public static async Task<CountryCatalog> FromJsonAsync(Stream json, CancellationToken cancellationToken = default) {
+        var countries = await JsonSerializer.DeserializeAsync<List<Country>>(
+            json,
+            serializerOptions,
+            cancellationToken)
+            ?? throw new InvalidDataException("Country data must contain a JSON array, not null.");
+
+        return new CountryCatalog(countries);
+    }
+
     public IReadOnlyList<Country> GetAll() => countries;
 
     public Country? GetByCode(string code) =>
