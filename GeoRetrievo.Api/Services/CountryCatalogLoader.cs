@@ -1,27 +1,22 @@
-using Google.Cloud.Storage.V1;
-
 namespace GeoRetrievo.Api.Services;
 
-public static class CountryCatalogLoader {
-    public static async Task<CountryCatalog> LoadAsync(IConfiguration configuration, CancellationToken cancellationToken = default) {
+public sealed class CountryCatalogLoader(IConfiguration configuration, ICountryDataSource countryDataSource) {
+    private const string DEFAULT_JSON_FILE_NAME = "countries.json";
+    private readonly IConfiguration configuration = configuration;
+    private readonly ICountryDataSource countryDataSource = countryDataSource;
+
+    public async Task<CountryCatalog> LoadAsync(CancellationToken cancellationToken = default) {
         string? bucket = configuration["CountryData:Bucket"];
 
         if (string.IsNullOrWhiteSpace(bucket)) {
-            string filePath = Path.Combine(AppContext.BaseDirectory, "Data", "countries.json");
+            string filePath = Path.Combine(AppContext.BaseDirectory, "Data", DEFAULT_JSON_FILE_NAME);
             await using var content = File.OpenRead(filePath);
             return await CountryCatalog.FromJsonAsync(content, cancellationToken);
         }
 
-        string objectName = configuration["CountryData:Object"] ?? "countries.json";
-        using var storageClient = await StorageClient.CreateAsync();
+        string objectName = configuration["CountryData:Object"] ?? DEFAULT_JSON_FILE_NAME;
+        await using var downloadedContent = await countryDataSource.DownloadAsync(bucket, objectName, cancellationToken);
 
-        await using var downloadedContent = new MemoryStream();
-        await storageClient.DownloadObjectAsync(
-            bucket,
-            objectName,
-            downloadedContent,
-            cancellationToken: cancellationToken);
-        downloadedContent.Position = 0;
         return await CountryCatalog.FromJsonAsync(downloadedContent, cancellationToken);
     }
 }

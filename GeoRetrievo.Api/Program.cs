@@ -9,6 +9,8 @@ if (builder.Configuration["PORT"] is { } port) {
 
 // Add services to the container.
 builder.Services.AddOpenApi();
+builder.Services.AddSingleton<ICountryDataSource, GoogleCloudStorageCountryDataSource>();
+builder.Services.AddSingleton<CountryCatalogLoader>();
 
 // Add CORS policy to allow requests from the React development server
 builder.Services.AddCors(options => {
@@ -38,7 +40,8 @@ app.MapGet("/health", () => Results.Ok(new {
     status = "healthy"
 }));
 
-var countries = await CountryCatalogLoader.LoadAsync(builder.Configuration);
+var catalogLoader = app.Services.GetRequiredService<CountryCatalogLoader>();
+var countries = await catalogLoader.LoadAsync();
 
 app.MapGet("/countries", () => {
     var allCountries = countries.GetAll();

@@ -8,8 +8,7 @@ public class CountryApiTests(WebApplicationFactory<Program> factory) : IClassFix
         using var response = await client.GetAsync("/health", TestContext.Current.CancellationToken);
 
         response.StatusCode.ShouldBe(HttpStatusCode.OK);
-        var result = await response.Content.ReadFromJsonAsync<HealthResponse>(
-            TestContext.Current.CancellationToken);
+        var result = await response.Content.ReadFromJsonAsync<HealthResponse>(TestContext.Current.CancellationToken);
 
         result.ShouldNotBeNull();
         result.Status.ShouldBe("healthy");
@@ -27,25 +26,13 @@ public class CountryApiTests(WebApplicationFactory<Program> factory) : IClassFix
 
     [Fact]
     public async Task CountryByCodeEndpointReturnsMatchingCountry() {
-        using var response = await client.GetAsync(
-            "/countries/CA",
-            TestContext.Current.CancellationToken);
+        var expected = new Country("Canada", "CA", "Ottawa", "Americas", 35540419, "CAD", "CA$", ["en", "fr"], "1", "https://flagcdn.com/w320/ca.png");
+        
+        using var response = await client.GetAsync( "/countries/CA", TestContext.Current.CancellationToken);
 
         response.StatusCode.ShouldBe(HttpStatusCode.OK);
-        var country = await response.Content.ReadFromJsonAsync<Country>(
-            TestContext.Current.CancellationToken);
+        var country = await response.Content.ReadFromJsonAsync<Country>(TestContext.Current.CancellationToken);
 
-        var expected = new Country(
-            "Canada",
-            "CA",
-            "Ottawa",
-            "Americas",
-            35540419,
-            "CAD",
-            "CA$",
-            ["en", "fr"],
-            "1",
-            "https://flagcdn.com/w320/ca.png");
         country.ShouldNotBeNull();
         country!.Languages.ShouldBe(expected.Languages);
         (country with { Languages = expected.Languages }).ShouldBe(expected);
@@ -58,12 +45,11 @@ public class CountryApiTests(WebApplicationFactory<Program> factory) : IClassFix
     [InlineData("ca")]
     [InlineData("XX")]
     public async Task CountryByCodeEndpointReturnsNotFoundForInvalidOrMissingCode(string code) {
-        using var response = await client.GetAsync(
-            $"/countries/{code}",
-            TestContext.Current.CancellationToken);
+        using var response = await client.GetAsync($"/countries/{code}", TestContext.Current.CancellationToken);
 
         response.StatusCode.ShouldBe(HttpStatusCode.NotFound);
         string body = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
+
         body.ShouldBeEmpty();
     }
 
