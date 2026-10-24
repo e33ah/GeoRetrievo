@@ -32,6 +32,18 @@ variable "runtime_service_account_id" {
   default     = "georetrievo-api-svc"
 }
 
+variable "ui_runtime_service_account_id" {
+  description = "Account ID of the dedicated UI Cloud Run runtime service account to create."
+  type        = string
+  default     = "georetrievo-ui-svc"
+}
+
+variable "deployment_service_account_email" {
+  description = "Email of the deployment service account allowed to attach the UI runtime service account."
+  type        = string
+  default     = "github-deploy-svc@georetrievo.iam.gserviceaccount.com"
+}
+
 variable "container_image" {
   description = "Full Artifact Registry image URI. Leave empty during initial provisioning, then set after pushing the image."
   type        = string

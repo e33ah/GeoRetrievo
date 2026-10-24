@@ -2,9 +2,10 @@
 
 This Terraform configuration provisions the Google Cloud resources used by
 GeoRetrievo: required APIs, an Artifact Registry repository, access for the
-existing API runtime service account to read the country-data bucket, and
-(after images are supplied) separate Cloud Run services for the API and UI.
-It does not create the runtime service account or the country-data bucket.
+existing API runtime service account to read the country-data bucket, a
+dedicated UI runtime service account, and (after images are supplied) separate
+Cloud Run services for the API and UI. It does not create the API runtime
+service account or the country-data bucket.
 
 ## Prerequisites
 
@@ -12,9 +13,10 @@ It does not create the runtime service account or the country-data bucket.
 - A Google Cloud project with billing enabled and permission to enable APIs,
   manage the documented resources, and update the country-data bucket IAM
   policy.
-- An existing country-data bucket and runtime service account. Defaults are
-  `country_data_01` and `georetrievo-api-svc`; change the corresponding
-  variables if your resources have different names.
+- An existing country-data bucket, API runtime service account, and deployment
+  service account. Defaults are `country_data_01`, `georetrievo-api-svc`, and
+  `github-deploy-svc@georetrievo.iam.gserviceaccount.com`; change the
+  corresponding variables if your resources have different names.
 - A private, versioned Cloud Storage bucket for Terraform state. The default
   backend bucket is `georetrievo-terraform-state`; create it before running
   Terraform. Keep it protected and do not commit state or plan files.
@@ -96,9 +98,12 @@ Artifact Registry deletes untagged images older than 14 days; tagged images
 are retained. Cloud Build, storage, logging, and other Google Cloud services
 may incur additional charges.
 
-Cloud Run uses the existing runtime service account, which receives only
-`roles/storage.objectViewer` on the country-data bucket. Do not deploy local
-ADC files or service-account keys.
+The API uses the existing runtime service account, which receives only
+`roles/storage.objectViewer` on the country-data bucket. The UI uses the
+dedicated `georetrievo-ui-svc` account, which receives no additional
+permissions; Terraform grants the deployment account `roles/iam.serviceAccountUser`
+on that UI account so it can attach it to Cloud Run. Do not deploy local ADC
+files or service-account keys.
 
 ## Automated release
 

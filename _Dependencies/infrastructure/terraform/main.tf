@@ -28,6 +28,20 @@ data "google_service_account" "api" {
   depends_on = [google_project_service.required]
 }
 
+resource "google_service_account" "ui" {
+  project      = var.project_id
+  account_id   = var.ui_runtime_service_account_id
+  display_name = "GeoRetrievo UI Cloud Run runtime"
+
+  depends_on = [google_project_service.required]
+}
+
+resource "google_service_account_iam_member" "ui_deployer" {
+  service_account_id = google_service_account.ui.name
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:${var.deployment_service_account_email}"
+}
+
 resource "google_storage_bucket_iam_member" "country_data_reader" {
   bucket = var.country_data_bucket
   role   = "roles/storage.objectViewer"
@@ -146,6 +160,7 @@ resource "google_cloud_run_v2_service" "ui" {
   deletion_protection = false
 
   template {
+    service_account                  = google_service_account.ui.email
     max_instance_request_concurrency = 80
     timeout                          = "300s"
     execution_environment            = "EXECUTION_ENVIRONMENT_GEN1"
@@ -178,7 +193,10 @@ resource "google_cloud_run_v2_service" "ui" {
     type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
   }
 
-  depends_on = [google_project_service.required]
+  depends_on = [
+    google_project_service.required,
+    google_service_account_iam_member.ui_deployer,
+  ]
 }
 
 resource "google_cloud_run_v2_service_iam_member" "ui_public_invoker" {

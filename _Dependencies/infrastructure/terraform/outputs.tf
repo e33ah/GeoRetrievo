@@ -17,3 +17,8 @@ output "runtime_service_account" {
   description = "Existing Cloud Run runtime service account email."
   value       = data.google_service_account.api.email
 }
+
+output "ui_runtime_service_account" {
+  description = "Dedicated UI Cloud Run runtime service account email."
+  value       = google_service_account.ui.email
+}
