@@ -161,7 +161,7 @@ resource "google_cloud_run_v2_service" "ui" {
 
   template {
     service_account                  = google_service_account.ui.email
-    max_instance_request_concurrency = 80
+    max_instance_request_concurrency = 1
     timeout                          = "300s"
     execution_environment            = "EXECUTION_ENVIRONMENT_GEN1"
 

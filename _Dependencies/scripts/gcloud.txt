@@ -19,6 +19,10 @@ gcloud storage buckets add-iam-policy-binding \
   --member="serviceAccount:georetrievo-api-svc@georetrievo.iam.gserviceaccount.com" \
   --role="roles/storage.objectViewer"
 
+# create service account for UI Cloud Run runtime
+gcloud iam service-accounts create georetrievo-ui-svc \
+  --display-name="GeoRetrievo UI Cloud Run runtime"
+
 # enable required services
 gcloud services enable \
   run.googleapis.com \
@@ -37,6 +41,7 @@ terraform import 'google_project_service.required["artifactregistry.googleapis.c
 terraform import 'google_project_service.required["storage.googleapis.com"]' 'georetrievo/storage.googleapis.com'
 terraform import 'google_project_service.required["iam.googleapis.com"]' 'georetrievo/iam.googleapis.com'
 terraform import google_storage_bucket_iam_member.country_data_reader "country_data_01 roles/storage.objectViewer serviceAccount:georetrievo-api-svc@georetrievo.iam.gserviceaccount.com"
+terraform import google_service_account.ui projects/georetrievo/serviceAccounts/georetrievo-ui-svc@georetrievo.iam.gserviceaccount.com
 
 # create service account for github deploy
 gcloud iam service-accounts create github-deploy-svc \
@@ -59,6 +64,7 @@ gcloud iam service-accounts add-iam-policy-binding github-deploy-svc@georetrievo
 
 $DEPLOY_SA = "github-deploy-svc@georetrievo.iam.gserviceaccount.com"
 $RUNTIME_SA = "georetrievo-api-svc@georetrievo.iam.gserviceaccount.com"
+$UI_RUNTIME_SA = "georetrievo-ui-svc@georetrievo.iam.gserviceaccount.com"
 
 # Let Terraform enable the required Google Cloud APIs.
 gcloud projects add-iam-policy-binding georetrievo --member="serviceAccount:$DEPLOY_SA" --role="roles/serviceusage.serviceUsageAdmin"
@@ -77,3 +83,5 @@ gcloud storage buckets add-iam-policy-binding gs://country_data_01 --member="ser
 
 # Let Terraform inspect and deploy Cloud Run using the existing runtime service account.
 gcloud iam service-accounts add-iam-policy-binding $RUNTIME_SA --project=georetrievo --member="serviceAccount:$DEPLOY_SA" --role="roles/iam.serviceAccountUser"
+gcloud iam service-accounts add-iam-policy-binding $UI_RUNTIME_SA --project=georetrievo --member="serviceAccount:$DEPLOY_SA" --role="roles/iam.serviceAccountUser"
+gcloud iam service-accounts add-iam-policy-binding $UI_RUNTIME_SA --project=georetrievo --member="serviceAccount:$DEPLOY_SA" --role="roles/iam.serviceAccountAdmin"
