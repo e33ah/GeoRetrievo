@@ -1,14 +1,10 @@
 namespace GeoRetrievo.Test;
 
 public class CountryCatalogTests {
-    const string JSON = """
-            [{"name":"Canada","code":"CA","capital":"Ottawa","region":"Americas","population":35540419,"currencyCode":"CAD","currencySymbol":"CA$","languages":["en","fr"],"callingCode":"+1","flag":"https://flagcdn.com/w320/ca.png"}]
-            """;
-
     [Fact]
     public void FromJsonDeserializesCountryProperties() {
         var catalog = CountryCatalog.FromJson(JSON);
-        var expected = new Country("Canada", "CA", "Ottawa", "Americas", 35540419, "CAD", "CA$", ["en", "fr"], "+1", "https://flagcdn.com/w320/ca.png");
+        var expected = ExpectedCountry;
 
         var actual = catalog.GetAll().ShouldHaveSingleItem();
 
@@ -34,7 +30,7 @@ public class CountryCatalogTests {
 
     [Fact]
     public void GetByCodeReturnsMatchingCountry() {
-        var expected = new Country("Canada", "CA", "Ottawa", "Americas", 35540419, "CAD", "CA$", ["en", "fr"], "+1", "https://flagcdn.com/w320/ca.png");
+        var expected = ExpectedCountry;
         var catalog = CountryCatalog.FromJson(JSON);
 
         var actual = catalog.GetByCode("CA");

@@ -2,6 +2,21 @@ using GeoRetrievo.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Logging.ClearProviders();
+if (builder.Environment.IsDevelopment()) {
+    builder.Logging.AddSimpleConsole(options => {
+        options.IncludeScopes = true;
+        options.SingleLine = true;
+        options.TimestampFormat = "yyyy-MM-dd HH:mm:ss.fff ";
+        options.UseUtcTimestamp = true;
+    });
+} else {
+    builder.Logging.AddJsonConsole(options => {
+        options.IncludeScopes = true;
+        options.UseUtcTimestamp = true;
+    });
+}
+
 // Configure the application to listen on the port specified in the PORT environment variable
 if (builder.Configuration["PORT"] is { } port) {
     builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
