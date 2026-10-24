@@ -19,4 +19,16 @@ gcloud storage buckets add-iam-policy-binding \
   --member="serviceAccount:georetrievo-api-svc@georetrievo.iam.gserviceaccount.com" \
   --role="roles/storage.objectViewer"
 
+# enable required services
+gcloud services enable \
+  run.googleapis.com \
+  cloudbuild.googleapis.com \
+  artifactregistry.googleapis.com 
 
+# terrform import commands for required services
+terraform import 'google_project_service.required["run.googleapis.com"]' 'georetrievo/run.googleapis.com'
+terraform import 'google_project_service.required["cloudbuild.googleapis.com"]' 'georetrievo/cloudbuild.googleapis.com'
+terraform import 'google_project_service.required["artifactregistry.googleapis.com"]' 'georetrievo/artifactregistry.googleapis.com'
+terraform import 'google_project_service.required["storage.googleapis.com"]' 'georetrievo/storage.googleapis.com'
+terraform import 'google_project_service.required["iam.googleapis.com"]' 'georetrievo/iam.googleapis.com'
+terraform import google_storage_bucket_iam_member.country_data_reader "country_data_01 roles/storage.objectViewer serviceAccount:georetrievo-api-svc@georetrievo.iam.gserviceaccount.com"
