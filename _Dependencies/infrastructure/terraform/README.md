@@ -88,6 +88,11 @@ data is therefore available to unauthenticated callers. The UI is public by
 default. Terraform automatically configures API CORS with the deployed UI
 origin; `cors_allowed_origins` can add other origins when required.
 
+The API limits each client IP to 60 requests per minute on the country
+endpoints and returns `429 Too Many Requests` when the limit is exceeded.
+This in-process limit is per Cloud Run instance and is not a substitute for
+edge-level protection against distributed traffic or cost-driving abuse.
+
 Both services scale to zero and use request-based CPU allocation. The API
 allows one request at a time per instance with 0.25 vCPU and 256 MiB of
 memory; the UI allows up to 80 concurrent requests per instance with 0.25

@@ -1,3 +1,5 @@
+using System.Globalization;
+using System.Threading.RateLimiting;
 using GeoRetrievo.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +28,30 @@ if (builder.Configuration["PORT"] is { } port) {
 builder.Services.AddOpenApi();
 builder.Services.AddSingleton<ICountryDataSource, GoogleCloudStorageCountryDataSource>();
 builder.Services.AddSingleton<CountryCatalogLoader>();
+builder.Services.AddRateLimiter(options => {
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    options.OnRejected = async (context, cancellationToken) => {
+        if (context.Lease.TryGetMetadata(MetadataName.RetryAfter, out var retryAfter)) {
+            context.HttpContext.Response.Headers.RetryAfter =
+                Math.Max(1, (int)Math.Ceiling(retryAfter.TotalSeconds))
+                    .ToString(CultureInfo.InvariantCulture);
+        }
+
+        await context.HttpContext.Response.WriteAsync(
+            "Too many requests. Please try again later.",
+            cancellationToken);
+    };
+
+    options.AddPolicy("countries", httpContext =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            _ => new FixedWindowRateLimiterOptions {
+                PermitLimit = 60,
+                Window = TimeSpan.FromMinutes(1),
+                QueueLimit = 0,
+                AutoReplenishment = true
+            }));
+});
 
 // Add CORS policy to allow requests from the React development server
 builder.Services.AddCors(options => {
@@ -41,8 +67,11 @@ builder.Services.AddCors(options => {
 
 var app = builder.Build();
 
+app.UseRouting();
+
 // Enable CORS for the React development server
 app.UseCors("ReactDev");
+app.UseRateLimiter();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {
@@ -61,11 +90,11 @@ var countries = await catalogLoader.LoadAsync();
 app.MapGet("/countries", () => {
     var allCountries = countries.GetAll();
     return allCountries is null ? Results.NotFound() : Results.Ok(allCountries);
-});
+}).RequireRateLimiting("countries");
 
 app.MapGet("/countries/{code}", (string code) => {
     var country = countries.GetByCode(code);
     return country is null ? Results.NotFound() : Results.Ok(country);
-});
+}).RequireRateLimiting("countries");
 
 app.Run();
