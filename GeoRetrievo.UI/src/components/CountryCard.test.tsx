@@ -40,6 +40,17 @@ describe("CountryCard", () => {
     expect(onOpenDetails).toHaveBeenCalledWith(country);
   });
 
+  it("opens country details with Space", async () => {
+    const user = userEvent.setup();
+    const onOpenDetails = vi.fn();
+    render(<CountryCard country={country} onOpenDetails={onOpenDetails} />);
+
+    screen.getByRole("button", { name: "View details for Canada" }).focus();
+    await user.keyboard(" ");
+
+    expect(onOpenDetails).toHaveBeenCalledWith(country);
+  });
+
   it("shows the currency name, symbol, and code", () => {
     render(<CountryCard country={country} onOpenDetails={vi.fn()} />);
 

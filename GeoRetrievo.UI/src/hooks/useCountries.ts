@@ -30,15 +30,15 @@ export function useCountries(): UseCountriesResult {
         logDebug("countries.fetch.started", { attempt: reloadKey + 1 });
 
         const data = await fetchCountries(controller.signal);
+        if (controller.signal.aborted) return;
+
         setCountries(data);
         logDebug("countries.fetch.succeeded", {
           attempt: reloadKey + 1,
           countryCount: data.length,
         });
       } catch (err) {
-        if (err instanceof Error && err.name === "AbortError") {
-          return;
-        }
+        if (controller.signal.aborted || (err instanceof Error && err.name === "AbortError")) return;
 
         logDebug("countries.fetch.failed", {
           attempt: reloadKey + 1,
