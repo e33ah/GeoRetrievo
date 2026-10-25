@@ -40,7 +40,7 @@ function renderControlPanel({
       searchInputRef={createRef<HTMLInputElement>()}
       sortBy="name-asc"
       onSortChange={onSortChange}
-      regions={['All', 'Europe', 'Asia']}
+      regions={['All', 'Europe', 'Asia', 'North America', 'South America']}
       selectedRegion={selectedRegion}
       onRegionChange={onRegionChange}
     />,
@@ -84,5 +84,16 @@ describe('ControlPanel', () => {
 
     expect(screen.getByRole('button', { name: 'Europe' })).toHaveAttribute('aria-pressed', 'true')
     expect(screen.getByRole('button', { name: 'Asia' })).toHaveAttribute('aria-pressed', 'false')
+  })
+
+  it('renders North America and South America as selectable regions', async () => {
+    const user = userEvent.setup()
+    const { onRegionChange } = renderControlPanel()
+
+    await user.click(screen.getByRole('button', { name: 'North America' }))
+    await user.click(screen.getByRole('button', { name: 'South America' }))
+
+    expect(onRegionChange).toHaveBeenNthCalledWith(1, 'North America')
+    expect(onRegionChange).toHaveBeenNthCalledWith(2, 'South America')
   })
 })

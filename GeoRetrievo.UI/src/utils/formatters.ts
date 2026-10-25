@@ -27,6 +27,8 @@ export function getRegionClass(region?: string): string {
     case "africa":
       return "badge-region-africa";
     case "americas":
+    case "north america":
+    case "south america":
       return "badge-region-americas";
     case "asia":
       return "badge-region-asia";

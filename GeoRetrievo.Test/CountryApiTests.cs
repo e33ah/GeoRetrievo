@@ -26,7 +26,7 @@ public class CountryApiTests(WebApplicationFactory<Program> factory) : IClassFix
 
     [Fact]
     public async Task CountryByCodeEndpointReturnsMatchingCountry() {
-        var expected = new Country("Canada", "CA", "Ottawa", "Americas", 35540419, "CAD", "CA$", ["en", "fr"], "1", "https://flagcdn.com/w320/ca.png");
+        var expected = new Country("Canada", "CA", "Ottawa", "North America", 35540419, "CAD", "CA$", ["en", "fr"], "1", "https://flagcdn.com/w320/ca.png");
 
         using var response = await client.GetAsync("/countries/CA", TestContext.Current.CancellationToken);
 
