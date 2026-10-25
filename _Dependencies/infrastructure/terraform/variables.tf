@@ -68,21 +68,16 @@ variable "country_data_object" {
   default     = "countries.json"
 }
 
-variable "cors_allowed_origins" {
-  description = "Additional allowed browser origins. The deployed UI origin is added automatically when the UI is deployed."
-  type        = list(string)
-  default     = []
-
-  validation {
-    condition     = alltrue([for origin in var.cors_allowed_origins : can(regex("^https?://[^/]+$", origin))])
-    error_message = "Each CORS origin must contain only a scheme and host (and optional port), without a path or trailing slash."
-  }
-}
-
 variable "allow_unauthenticated" {
-  description = "Whether to allow public invocation of the API Cloud Run service."
+  description = "Deprecated compatibility setting; the API is always private and this value is ignored."
   type        = bool
   default     = false
+}
+
+variable "cors_allowed_origins" {
+  description = "Deprecated compatibility setting; browser requests use the same-origin UI proxy."
+  type        = list(string)
+  default     = []
 }
 
 variable "ui_allow_unauthenticated" {

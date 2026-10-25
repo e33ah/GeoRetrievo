@@ -17,8 +17,9 @@ public partial class Build : FalloutBuild {
     readonly Solution Solution;
 
     readonly AbsolutePath ApiDockerContext = RootDirectory / "GeoRetrievo.Api";
-    readonly AbsolutePath UIDockerContext = RootDirectory / "GeoRetrievo.UI";
-    readonly AbsolutePath TestProjectFile = RootDirectory / "GeoRetrievo.Test" / "GeoRetrievo.Test.csproj";
+    readonly AbsolutePath UIDockerContext = RootDirectory;
+    readonly AbsolutePath TestProjectFile = RootDirectory / "GeoRetrievo.Api.Test" / "GeoRetrievo.Api.Test.csproj";
+    readonly AbsolutePath ProxyTestProjectFile = RootDirectory / "GeoRetrievo.Proxy.Test" / "GeoRetrievo.Proxy.Test.csproj";
     readonly AbsolutePath TerraformDirectory = RootDirectory / "_Dependencies" / "infrastructure" / "terraform";
     readonly AbsolutePath UIDir = RootDirectory / "GeoRetrievo.UI";
 }

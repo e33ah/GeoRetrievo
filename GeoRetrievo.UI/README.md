@@ -25,26 +25,18 @@ npm run dev
 Open [http://localhost:5173](http://localhost:5173). The API is expected at
 `http://localhost:5294`.
 
-### Configure the API URL
+### Configure the development API target
 
-Vite reads `VITE_API_BASE_URL` from mode-specific environment files:
-
-| File | Used by | Default |
-| --- | --- | --- |
-| `.env.development` | `npm run dev` | `http://localhost:5294` |
-| `.env.production` | `npm run build` | Deployed API URL |
-
-For a local-only development override, create
+The browser always calls same-origin `/api` routes. During development, Vite
+proxies those requests to the local API. To change the target, create
 `.env.development.local` in this directory:
 
 ```dotenv
 VITE_API_BASE_URL=http://localhost:5294
 ```
 
-Files ending in `.local` are ignored by Git. Production builds bake the API
-URL into the static assets; set `VITE_API_BASE_URL` when building the
-container if the default deployment URL is not appropriate. The API must
-allow the UI's origin through its CORS configuration.
+Files ending in `.local` are ignored by Git. Production builds do not contain
+the API URL; Cloud Run supplies `Api__BaseUrl` to the .NET UI proxy at runtime.
 
 ## Scripts
 
@@ -60,27 +52,28 @@ Run these commands from `GeoRetrievo.UI`:
 
 ## Build and run the container
 
-From the repository root, pass the API URL at build time:
+The UI image builds the React assets with Node.js, then publishes them with the
+ASP.NET Core UI proxy. It is designed to run on Cloud Run, where the proxy uses
+the attached UI service account to obtain an ID token for the private API.
 
 ```powershell
 docker build `
-  --build-arg VITE_API_BASE_URL=https://your-api.example.com `
+  -f .\GeoRetrievo.Proxy\Dockerfile `
   -t georetrievo-ui:local `
-  .\GeoRetrievo.UI
-docker run --rm -p 8080:8080 georetrievo-ui:local
+  .
 ```
 
-Open [http://localhost:8080](http://localhost:8080). The image builds the
-static client with Node.js and serves it using Nginx on port `8080`, with
-fallback routing for client-side paths. Configure the API to allow the
-deployed UI origin before using the client against that API.
+The container requires `Api__BaseUrl` and Cloud Run metadata credentials at
+runtime; local UI development should use Vite's proxy instead of running this
+container directly.
 
 ## API integration
 
-The UI uses these API routes:
+The browser calls these same-origin routes; the .NET proxy forwards them to
+the private API with a Cloud Run ID token:
 
-- `GET /countries` — retrieve the country catalogue.
-- `GET /countries/{code}` — retrieve a country by code.
+- `GET /api/countries` — retrieve the country catalogue.
+- `GET /api/countries/{code}` — retrieve a country by code.
 - `GET /health` — check API health.
 
 Request and error handling lives in `src/services`; React state and retry

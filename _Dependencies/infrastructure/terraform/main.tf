@@ -6,11 +6,6 @@ locals {
     "run.googleapis.com",
     "storage.googleapis.com",
   ])
-
-  api_cors_allowed_origins = var.ui_container_image == "" ? var.cors_allowed_origins : concat(
-    var.cors_allowed_origins,
-    [google_cloud_run_v2_service.ui[0].uri],
-  )
 }
 
 resource "google_project_service" "required" {
@@ -118,14 +113,6 @@ resource "google_cloud_run_v2_service" "api" {
         value = var.country_data_object
       }
 
-      dynamic "env" {
-        for_each = local.api_cors_allowed_origins
-
-        content {
-          name  = "Cors__AllowedOrigins__${env.key}"
-          value = env.value
-        }
-      }
     }
   }
 
@@ -140,18 +127,18 @@ resource "google_cloud_run_v2_service" "api" {
   ]
 }
 
-resource "google_cloud_run_v2_service_iam_member" "public_invoker" {
-  count = var.container_image != "" && var.allow_unauthenticated ? 1 : 0
+resource "google_cloud_run_v2_service_iam_member" "ui_api_invoker" {
+  count = var.container_image != "" && var.ui_container_image != "" ? 1 : 0
 
   project  = var.project_id
   location = var.region
   name     = google_cloud_run_v2_service.api[0].name
   role     = "roles/run.invoker"
-  member   = "allUsers"
+  member   = "serviceAccount:${google_service_account.ui.email}"
 }
 
 resource "google_cloud_run_v2_service" "ui" {
-  count = var.ui_container_image == "" ? 0 : 1
+  count = var.ui_container_image == "" || var.container_image == "" ? 0 : 1
 
   project             = var.project_id
   name                = var.ui_service_name
@@ -185,6 +172,11 @@ resource "google_cloud_run_v2_service" "ui" {
           memory = var.ui_memory
         }
       }
+
+      env {
+        name  = "Api__BaseUrl"
+        value = google_cloud_run_v2_service.api[0].uri
+      }
     }
   }
 
@@ -196,6 +188,7 @@ resource "google_cloud_run_v2_service" "ui" {
   depends_on = [
     google_project_service.required,
     google_service_account_iam_member.ui_deployer,
+    google_cloud_run_v2_service_iam_member.ui_api_invoker,
   ]
 }
 

@@ -10,5 +10,10 @@ public partial class Build : FalloutBuild {
                 .SetConfiguration(Configuration)
                 .SetNoBuild(true)
             );
+            DotNetTasks.DotNetRun(s => s
+                .SetProjectFile(ProxyTestProjectFile)
+                .SetConfiguration(Configuration)
+                .SetNoBuild(true)
+            );
         });
 }

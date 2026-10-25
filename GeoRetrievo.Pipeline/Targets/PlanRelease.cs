@@ -22,7 +22,6 @@ public partial class Build : FalloutBuild {
                 $"-var=region={GoogleCloudRegion}",
                 $"-var=container_image={GetApiImageUri()}",
                 $"-var=ui_container_image={GetUiImageUri()}",
-                $"-var=allow_unauthenticated={AllowUnauthenticated.ToString().ToLowerInvariant()}",
             };
             RunTerraform(arguments);
 

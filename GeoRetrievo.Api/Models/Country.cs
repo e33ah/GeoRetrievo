@@ -1,6 +1,5 @@
 ﻿namespace GeoRetrievo.Api.Models;
 
-
 public record Country(
     string Name,
     string Code,

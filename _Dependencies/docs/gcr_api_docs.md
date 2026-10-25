@@ -32,12 +32,20 @@ than silently serving stale/local data.
    Cloud Run uses Application Default Credentials for the assigned service
    account; do not add a service-account key file to the application or bucket.
    The API listens on the port supplied by Cloud Run.
-   Add `--allow-unauthenticated` to the deploy command only if the API should
-   be publicly reachable.
-3. Set `Cors__AllowedOrigins__0` on the API service to the deployed UI's exact
-   origin (for example, `https://your-ui.example.com`). The localhost origin is
-   used when no allowed origins are configured. In the UI's build environment,
-   set `VITE_API_BASE_URL` to the Cloud Run API URL.
+   Do not add `--allow-unauthenticated`; the API must remain private.
+3. Grant only the UI runtime service account permission to invoke the API:
+
+   ```powershell
+   gcloud run services add-iam-policy-binding georetrievo-api `
+     --region YOUR_REGION `
+     --member="serviceAccount:YOUR_UI_SERVICE_ACCOUNT" `
+     --role="roles/run.invoker"
+   ```
+
+   In production, the UI's .NET proxy gets an ID token for the API URL from
+   Cloud Run's metadata server. The React app calls same-origin `/api` routes;
+   no API URL or token is included in browser assets, and API CORS is not
+   needed.
 
 For local testing against Cloud Storage, authenticate with Application Default
 Credentials (`gcloud auth application-default login`) and set

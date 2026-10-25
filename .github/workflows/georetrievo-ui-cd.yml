@@ -62,9 +62,15 @@ jobs:
 
       - name: 'Run: ExecuteUnitTestsUI'
         run: bash ./build.sh ExecuteUnitTestsUI --skip BuildUI
+        
+      - name: 'Run: BuildSolution'
+        run: bash ./build.sh BuildSolution
+
+      - name: 'Run: ExecuteUnitTests'
+        run: bash ./build.sh ExecuteUnitTests --skip BuildSolution
 
       - name: 'Run: BuildUIImage'
-        run: bash ./build.sh BuildUIImage --skip BuildUI ExecuteUnitTestsUI --build-for-release true
+        run: bash ./build.sh BuildUIImage --skip BuildUI ExecuteUnitTestsUI BuildSolution ExecuteUnitTests
 
       - name: 'Run: PushUIImage'
         run: bash ./build.sh PushUIImage --skip BuildUI ExecuteUnitTestsUI BuildUIImage

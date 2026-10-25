@@ -21,8 +21,7 @@ public partial class Build : FalloutBuild {
 
     private void ApplyTerraform(
         string apiContainerImage = null,
-        string uiContainerImage = null,
-        bool? allowUnauthenticated = null) {
+        string uiContainerImage = null) {
         var arguments = new List<string> {
             "apply",
             "-auto-approve",
@@ -37,10 +36,6 @@ public partial class Build : FalloutBuild {
 
         if (uiContainerImage is not null) {
             arguments.Add($"-var=ui_container_image={uiContainerImage}");
-        }
-
-        if (allowUnauthenticated.HasValue) {
-            arguments.Add($"-var=allow_unauthenticated={allowUnauthenticated.Value.ToString().ToLowerInvariant()}");
         }
 
         Log.Information("Applying Terraform configuration");

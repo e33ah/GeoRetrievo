@@ -1,10 +1,7 @@
 namespace GeoRetrievo.Pipeline;
 
 public partial class Build : FalloutBuild {
-    private void BuildDockerImage(
-        AbsolutePath dockerContext,
-        string image,
-        IEnumerable<string> buildArguments = null) {
+    private void BuildDockerImage(AbsolutePath dockerContext, string image, IEnumerable<string> buildArguments = null, string dockerfile = null) {
         var arguments = new List<string> {
             "build",
         };
@@ -15,7 +12,7 @@ public partial class Build : FalloutBuild {
         arguments.Add("--tag");
         arguments.Add(image);
         arguments.Add("--file");
-        arguments.Add((dockerContext / "Dockerfile").ToString());
+        arguments.Add(dockerfile ?? (dockerContext / "Dockerfile").ToString());
         arguments.Add(dockerContext.ToString());
 
         Log.Information("Building Docker image {Image} from {DockerContext}", image, dockerContext);

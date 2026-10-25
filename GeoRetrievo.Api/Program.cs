@@ -53,24 +53,10 @@ builder.Services.AddRateLimiter(options => {
             }));
 });
 
-// Add CORS policy to allow requests from the React development server
-builder.Services.AddCors(options => {
-    options.AddPolicy("ReactDev", policy => {
-        policy
-            .WithOrigins(
-                builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
-                    ?? ["http://localhost:5173"])
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-    });
-});
-
 var app = builder.Build();
 
 app.UseRouting();
 
-// Enable CORS for the React development server
-app.UseCors("ReactDev");
 app.UseRateLimiter();
 
 // Configure the HTTP request pipeline.

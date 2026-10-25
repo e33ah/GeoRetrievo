@@ -1,4 +1,4 @@
-namespace GeoRetrievo.Test;
+namespace GeoRetrievo.Api.Test;
 
 public class CountryCatalogTests {
     [Fact]

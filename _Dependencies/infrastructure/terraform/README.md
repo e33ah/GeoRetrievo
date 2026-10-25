@@ -5,7 +5,8 @@ GeoRetrievo: required APIs, an Artifact Registry repository, access for the
 existing API runtime service account to read the country-data bucket, a
 dedicated UI runtime service account, and (after images are supplied) separate
 Cloud Run services for the API and UI. It does not create the API runtime
-service account or the country-data bucket.
+service account or the country-data bucket. Terraform grants
+`roles/run.invoker` on the API service to the UI runtime service account.
 
 ## Prerequisites
 
@@ -53,8 +54,8 @@ terraform import google_storage_bucket_iam_member.country_data_reader `
 ```
 
 The initial apply enables the required APIs, grants the bucket access, and
-creates the Artifact Registry repository. Cloud Run services are created once
-their corresponding `container_image` or `ui_container_image` is set:
+creates the Artifact Registry repository. The API service is created when
+`container_image` is set; the UI is created once both image variables are set:
 
 ```powershell
 terraform plan
@@ -82,16 +83,20 @@ push a new image, update `container_image`, and apply again.
 
 ## Access and operating costs
 
-The API is private by default. The release pipeline makes it publicly
-invokable because the public browser UI calls the API directly; catalogue
-data is therefore available to unauthenticated callers. The UI is public by
-default. Terraform automatically configures API CORS with the deployed UI
-origin; `cors_allowed_origins` can add other origins when required.
+The API is only invokable by the UI service account; the public browser does
+not call the API directly. The UI proxy obtains a Cloud Run ID token at
+runtime and forwards the browser's country requests to the API. The UI is
+public by default. Browser-to-UI traffic is same-origin, so CORS is not
+required for this flow. Check for inherited project, folder, or organization
+`roles/run.invoker` grants: Cloud Run IAM allow policies are additive, so a
+service-level binding cannot cancel a broader inherited grant.
 
 The API limits each client IP to 60 requests per minute on the country
 endpoints and returns `429 Too Many Requests` when the limit is exceeded.
-This in-process limit is per Cloud Run instance and is not a substitute for
-edge-level protection against distributed traffic or cost-driving abuse.
+With the proxy architecture, API requests originate from the UI service, so
+this existing in-process limit no longer distinguishes individual browsers.
+It is per API instance and is not a substitute for edge-level protection
+against distributed traffic or cost-driving abuse.
 
 Both services scale to zero and use request-based CPU allocation. The API
 allows one request at a time per instance with 0.25 vCPU and 256 MiB of
@@ -105,10 +110,10 @@ may incur additional charges.
 
 The API uses the existing runtime service account, which receives only
 `roles/storage.objectViewer` on the country-data bucket. The UI uses the
-dedicated `georetrievo-ui-svc` account, which receives no additional
-permissions; Terraform grants the deployment account `roles/iam.serviceAccountUser`
-on that UI account so it can attach it to Cloud Run. Do not deploy local ADC
-files or service-account keys.
+dedicated `georetrievo-ui-svc` account, which receives only API invocation
+permission; Terraform grants the deployment account
+`roles/iam.serviceAccountUser` on that UI account so it can attach it to Cloud
+Run. Do not deploy local ADC files or service-account keys.
 
 ## Automated release
 
@@ -120,18 +125,35 @@ permissions needed to provision infrastructure, push images, and deploy
 Cloud Run.
 
 The separate `PlanRelease` target formats, validates, and plans without
-applying. The CD workflow runs `ReleaseUI`, which builds and pushes the API
-image, deploys the API, builds the UI image with the deployed API URL, deploys
-the public UI, and updates API CORS to allow the UI origin. Provision the API
-infrastructure before the first release. The CI workflow runs on pushes,
-pull requests, and manual dispatches to build and test the application. Run
-deployment targets from the repository root:
+applying. It plans using the current release tag for both images; it does not
+build or push them. `ReleaseAPI` builds and pushes the API image, then updates
+the API service while retaining the UI image already recorded in Terraform
+state. `ReleaseUI` builds and pushes the combined React/.NET proxy image, then
+updates the UI service while retaining the API image already in Terraform
+state. The UI service receives the API URL at runtime. Terraform grants the
+UI service account API invocation and removes the previously managed public
+API invoker. Check the API service IAM policy and inherited
+project/folder/organization grants to confirm no other principals can invoke
+it.
+
+For a first deployment, provision the infrastructure, run `ReleaseAPI` to
+create the private API, then run `ReleaseUI`. For an existing deployment
+whose browser UI still calls the API directly, run `ReleaseUI` first to deploy
+the proxy UI; that apply also grants it API invocation and removes the API's
+public invoker. The CI workflow runs on pushes, pull requests, and manual
+dispatches to build and test the application. Run deployment targets from the
+repository root:
 
 ```powershell
 .\build.ps1 ProvisionAPIInfrastructure
 .\build.ps1 PlanRelease
+.\build.ps1 ReleaseAPI
 .\build.ps1 ReleaseUI
 ```
+
+After an initial `ReleaseAPI`, or whenever the API code changes, run
+`ReleaseAPI` to deploy it. Later API and UI releases retain the
+service-to-service invoker grant.
 
 The pipeline defaults to Google Cloud project `georetrievo`, region
 `us-central1`, and state bucket `georetrievo-terraform-state`. Override the

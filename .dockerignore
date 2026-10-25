@@ -1,0 +1,11 @@
+**
+!GeoRetrievo.UI/
+!GeoRetrievo.UI/**
+!GeoRetrievo.Proxy/
+!GeoRetrievo.Proxy/**
+GeoRetrievo.UI/node_modules
+GeoRetrievo.UI/dist
+GeoRetrievo.UI/.env
+GeoRetrievo.UI/.env.*
+GeoRetrievo.Proxy/bin
+GeoRetrievo.Proxy/obj

@@ -1,5 +1,22 @@
-import { describe, expect, it } from 'vitest'
-import { parseCountriesResponse, parseCountry } from './countriesApi'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { fetchCountries, parseCountriesResponse, parseCountry } from './countriesApi'
+
+afterEach(() => {
+  vi.unstubAllGlobals()
+})
+
+describe('fetchCountries', () => {
+  it('uses the same-origin proxy route', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify([{ name: 'Japan', code: 'JP' }]), { status: 200 }),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+
+    await fetchCountries()
+
+    expect(fetchMock).toHaveBeenCalledWith('/api/countries', { signal: undefined })
+  })
+})
 
 describe('parseCountry', () => {
   it('normalizes required fields and supplies defaults for optional fields', () => {

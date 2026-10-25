@@ -10,10 +10,7 @@ public partial class Build : FalloutBuild {
             string uiImage = GetUiImageUri();
 
             Log.Information("Deploying UI image {Image} to project {ProjectId} in {Region}", uiImage, GoogleCloudProjectId, GoogleCloudRegion);
-            ApplyTerraform(
-                apiImage,
-                uiImage,
-                allowUnauthenticated: AllowUnauthenticated);
+            ApplyTerraform(apiImage, uiImage);
 
             string uiUrl = GetTerraformOutput("ui_url");
             Log.Information("UI release completed: {UiUrl}", uiUrl);

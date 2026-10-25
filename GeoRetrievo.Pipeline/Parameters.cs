@@ -2,14 +2,8 @@
 
 public partial class Build : FalloutBuild {
 
-    [Parameter("Allow unauthenticated browser access during release")]
-    readonly bool AllowUnauthenticated = true;
-
     [Parameter("Artifact Registry repository ID")]
     readonly string ArtifactRegistryRepository = "georetrievo";
-
-    [Parameter("Build the UI image with the deployed API URL for release")]
-    readonly bool BuildForRelease;
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;

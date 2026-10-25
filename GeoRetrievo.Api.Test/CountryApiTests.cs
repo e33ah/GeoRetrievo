@@ -1,4 +1,4 @@
-namespace GeoRetrievo.Test;
+namespace GeoRetrievo.Api.Test;
 
 public class CountryApiTests(WebApplicationFactory<Program> factory) : IClassFixture<WebApplicationFactory<Program>> {
     private readonly HttpClient client = factory.CreateClient();
