@@ -6,6 +6,9 @@ export interface Country {
   region: string;
   population: number;
   currency: string;
+  currencyCode: string;
+  currencySymbol: string;
+  languages: string[];
   callingCode: string;
   flag: string;
 }

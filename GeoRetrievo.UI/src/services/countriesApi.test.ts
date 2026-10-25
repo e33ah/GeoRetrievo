@@ -10,9 +10,30 @@ describe('parseCountry', () => {
       region: 'Unknown',
       population: 68000000,
       currency: '',
+      currencyCode: '',
+      currencySymbol: '',
+      languages: [],
       callingCode: '',
       flag: '',
     })
+
+  })
+
+  it('parses currency and language details returned by the API', () => {
+    expect(parseCountry({
+      name: 'France',
+      code: 'FR',
+      currencyCode: 'EUR',
+      currencySymbol: '€',
+      languages: ['French', 42],
+      callingCode: '+33',
+    })).toEqual(expect.objectContaining({
+      currency: 'EUR',
+      currencyCode: 'EUR',
+      currencySymbol: '€',
+      languages: ['French'],
+      callingCode: '33',
+    }))
   })
 
   it.each([

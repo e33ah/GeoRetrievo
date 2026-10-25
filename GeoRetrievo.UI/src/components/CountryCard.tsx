@@ -1,19 +1,37 @@
 import type { Country } from "../types/Country";
-import { getFlagEmoji, getRegionClass } from "../utils/formatters";
+import { formatCurrencyName, getFlagEmoji, getRegionClass } from "../utils/formatters";
 
 interface CountryCardProps {
   country: Country;
+  onOpenDetails: (country: Country) => void;
 }
 
-export function CountryCard({ country }: CountryCardProps) {
+export function CountryCard({ country, onOpenDetails }: CountryCardProps) {
   const populationText =
     typeof country.population === "number" && Number.isFinite(country.population)
       ? country.population.toLocaleString()
       : "0";
 
   const flagSrc = country.flag || (country.code ? `https://flagcdn.com/w320/${country.code.toLowerCase()}.png` : "");
+  const openDetails = () => onOpenDetails(country);
+
   return (
-    <article className="country-card">
+    <article
+      className="country-card"
+      role="button"
+      tabIndex={0}
+      aria-label={`View details for ${country.name}`}
+      onClick={(event) => {
+        event.currentTarget.focus();
+        openDetails();
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openDetails();
+        }
+      }}
+    >
       <div className="card-heading">
         <div className="country-identity">
 
@@ -110,7 +128,11 @@ export function CountryCard({ country }: CountryCardProps) {
             </svg>
             Currency
           </dt>
-          <dd className="spec-value">{country.currency || "Unknown"}</dd>
+          <dd className="spec-value">
+            {country.currency
+              ? `${formatCurrencyName(country.currency)} (${country.currency})`
+              : "Unknown"}
+          </dd>
         </div>
 
         <div className="spec-item">

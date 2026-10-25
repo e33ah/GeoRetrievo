@@ -30,8 +30,18 @@ export function parseCountry(data: unknown): Country | null {
       ? record.population
       : Number(record.population);
   const population = Number.isFinite(rawPop) ? Math.max(0, rawPop) : 0;
-  const currency = typeof record.currency === "string" ? record.currency : "";
-  const callingCode = typeof record.callingCode === "string" ? record.callingCode : "";
+  const currencyCode =
+    typeof record.currencyCode === "string"
+      ? record.currencyCode
+      : typeof record.currency === "string"
+        ? record.currency
+        : "";
+  const currencySymbol = typeof record.currencySymbol === "string" ? record.currencySymbol : "";
+  const languages = Array.isArray(record.languages)
+    ? record.languages.filter((language): language is string => typeof language === "string")
+    : [];
+  const callingCode =
+    typeof record.callingCode === "string" ? record.callingCode.replace(/^\+/, "") : "";
   const flag = typeof record.flag === "string" ? record.flag : "";
 
   return {
@@ -40,7 +50,10 @@ export function parseCountry(data: unknown): Country | null {
     capital,
     region,
     population,
-    currency,
+    currency: currencyCode,
+    currencyCode,
+    currencySymbol,
+    languages,
     callingCode,
     flag
   };

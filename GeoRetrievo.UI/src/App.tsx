@@ -4,9 +4,11 @@ import { useSearchShortcut } from "./hooks/useSearchShortcut";
 import { HeroHeader } from "./components/HeroHeader";
 import { ControlPanel, type SortOption } from "./components/ControlPanel";
 import { CountryCard } from "./components/CountryCard";
+import { CountryDetailsModal } from "./components/CountryDetailsModal";
 import { LoadingSkeleton } from "./components/LoadingSkeleton";
 import { ErrorState } from "./components/ErrorState";
 import { EmptyState } from "./components/EmptyState";
+import type { Country } from "./types/Country";
 import "./App.css";
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
   const [search, setSearch] = useState("");
   const [region, setRegion] = useState("All");
   const [sortBy, setSortBy] = useState<SortOption>("name-asc");
+  const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
+  const closeCountryDetails = useCallback(() => setSelectedCountry(null), []);
 
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -73,6 +77,15 @@ function App() {
     setRegion("All");
     setSortBy("name-asc");
     searchInputRef.current?.focus();
+  }, []);
+
+  const handleBackToTop = useCallback(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+    });
   }, []);
 
   const isFiltered = search.trim() !== "" || region !== "All" || sortBy !== "name-asc";
@@ -139,13 +152,41 @@ function App() {
       {!loading && !error && filteredCountries.length > 0 && (
         <section className="grid" aria-label="Countries list">
           {filteredCountries.map((country) => (
-            <CountryCard key={country.code} country={country} />
+            <CountryCard
+              key={country.code}
+              country={country}
+              onOpenDetails={setSelectedCountry}
+            />
           ))}
         </section>
       )}
 
+      {selectedCountry && (
+        <CountryDetailsModal
+          country={selectedCountry}
+          onClose={closeCountryDetails}
+        />
+      )}
+
       {/* Footer */}
       <footer className="footer">
+        <button type="button" className="back-to-top-btn" onClick={handleBackToTop}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m18 15-6-6-6 6" />
+          </svg>
+          Back to top
+        </button>
         <p>&copy; 2026 GeoRetrievo</p>
       </footer>
     </main>

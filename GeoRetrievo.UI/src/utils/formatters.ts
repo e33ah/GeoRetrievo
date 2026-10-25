@@ -1,3 +1,6 @@
+const languageNames = new Intl.DisplayNames(["en"], { type: "language" });
+const currencyNames = new Intl.DisplayNames(["en"], { type: "currency" });
+
 export function getFlagEmoji(countryCode?: string): string {
   if (!countryCode || countryCode.length !== 2) return "🌐";
   try {
@@ -8,6 +11,24 @@ export function getFlagEmoji(countryCode?: string): string {
     return String.fromCodePoint(...codePoints);
   } catch {
     return "🌐";
+  }
+}
+
+export function formatLanguageName(languageCode: string): string {
+  try {
+    return languageNames.of(languageCode) ?? languageCode;
+  } catch (error) {
+    if (error instanceof RangeError) return languageCode;
+    throw error;
+  }
+}
+
+export function formatCurrencyName(currencyCode: string): string {
+  try {
+    return currencyNames.of(currencyCode) ?? currencyCode;
+  } catch (error) {
+    if (error instanceof RangeError) return currencyCode;
+    throw error;
   }
 }
 
