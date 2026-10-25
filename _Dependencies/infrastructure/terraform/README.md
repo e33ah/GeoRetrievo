@@ -81,6 +81,21 @@ terraform output -raw api_url
 Use immutable image tags for releases. To deploy a new revision, build and
 push a new image, update `container_image`, and apply again.
 
+Once both services are deployed, Terraform maps `georetrievo.uk` to the UI by
+default. Before applying, verify ownership of the domain with Google Cloud
+(Cloud Run domain mappings require a verified domain). After the mapping is
+created, retrieve the DNS records Cloud Run requires:
+
+```powershell
+terraform output -json ui_domain_dns_records
+```
+
+Create those records with your DNS provider. DNS and certificate provisioning
+can take time; the custom URL is `https://georetrievo.uk`. Set
+`ui_domain_name = ""` to disable the custom mapping and use the default Cloud
+Run URL instead. The API remains private and is not mapped to the public
+domain.
+
 ## Access and operating costs
 
 The API is only invokable by the UI service account; the public browser does

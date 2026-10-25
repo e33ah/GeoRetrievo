@@ -4,3 +4,4 @@ country_data_bucket     = "country_data_01"
 container_image          = ""
 ui_container_image       = ""
 ui_allow_unauthenticated = true
+ui_domain_name           = "georetrievo.uk"

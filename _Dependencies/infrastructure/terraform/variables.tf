@@ -20,6 +20,12 @@ variable "ui_service_name" {
   default     = "georetrievo-ui"
 }
 
+variable "ui_domain_name" {
+  description = "Custom domain mapped to the public web UI. Set to an empty string to disable the mapping."
+  type        = string
+  default     = "georetrievo.uk"
+}
+
 variable "repository_id" {
   description = "Artifact Registry Docker repository ID."
   type        = string

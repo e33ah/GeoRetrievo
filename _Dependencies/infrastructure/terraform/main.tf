@@ -192,6 +192,22 @@ resource "google_cloud_run_v2_service" "ui" {
   ]
 }
 
+resource "google_cloud_run_domain_mapping" "ui" {
+  count = var.ui_domain_name == "" || var.ui_container_image == "" || var.container_image == "" ? 0 : 1
+
+  project  = var.project_id
+  location = var.region
+  name     = var.ui_domain_name
+
+  metadata {
+    namespace = var.project_id
+  }
+
+  spec {
+    route_name = google_cloud_run_v2_service.ui[0].name
+  }
+}
+
 resource "google_cloud_run_v2_service_iam_member" "ui_public_invoker" {
   count = var.ui_container_image != "" && var.ui_allow_unauthenticated ? 1 : 0
 
