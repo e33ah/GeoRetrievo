@@ -14,7 +14,7 @@ public class CountryCatalogTests {
 
     [Fact]
     public async Task FromJsonAsyncDeserializesCountryProperties() {
-        await using var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(JSON));
+        await using var stream = new MemoryStream(Encoding.UTF8.GetBytes(JSON));
 
         var catalog = await CountryCatalog.FromJsonAsync(stream, TestContext.Current.CancellationToken);
 
@@ -24,6 +24,13 @@ public class CountryCatalogTests {
     [Fact]
     public void FromJsonRejectsNullInsteadOfAnArray() {
         var exception = Should.Throw<InvalidDataException>(() => CountryCatalog.FromJson("null"));
+
+        exception.Message.ShouldBe("Country data must contain a JSON array, not null.");
+    }
+
+    [Fact]
+    public async Task FromJsonAsyncRejectsNullInsteadOfAnArray() {
+        var exception = Should.Throw<InvalidDataException>(() => CountryCatalog.FromJsonAsync(new MemoryStream(Encoding.UTF8.GetBytes("null")), TestContext.Current.CancellationToken));
 
         exception.Message.ShouldBe("Country data must contain a JSON array, not null.");
     }
@@ -46,5 +53,14 @@ public class CountryCatalogTests {
 
         catalog.GetByCode("US").ShouldBeNull();
         catalog.GetByCode("ca").ShouldBeNull();
+    }
+
+    [Fact]
+    public void FromJsonMatchesPropertyNamesCaseInsensitively() {
+        string json = JSON.Replace("\"name\"", "\"NAME\"", StringComparison.Ordinal);
+
+        var catalog = CountryCatalog.FromJson(json);
+
+        catalog.GetByCode("CA")!.Name.ShouldBe("Canada");
     }
 }

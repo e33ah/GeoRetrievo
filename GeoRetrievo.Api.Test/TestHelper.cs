@@ -10,11 +10,13 @@ internal static class TestHelper {
     internal sealed class FakeCountryDataSource(string json) : ICountryDataSource {
         public string? Bucket { get; private set; }
         public string? ObjectName { get; private set; }
+        public bool DownloadWasCalled { get; private set; }
 
         public Task<Stream> DownloadAsync(
             string bucket,
             string objectName,
             CancellationToken cancellationToken = default) {
+            DownloadWasCalled = true;
             Bucket = bucket;
             ObjectName = objectName;
             Stream content = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(json));
