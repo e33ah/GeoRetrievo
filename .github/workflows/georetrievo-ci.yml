@@ -40,6 +40,8 @@ jobs:
 
       - name: 'Setup: Trivy'
         uses: aquasecurity/setup-trivy@v0.2.6
+        with:
+          path: ./.trivy
 
       - name: 'Run: BuildSolution'
         run: ./build.ps1 BuildSolution
