@@ -17,6 +17,12 @@ RUN dotnet publish GeoRetrievo.Proxy/GeoRetrievo.Proxy.csproj -c Release -o /out
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
 WORKDIR /app
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
 COPY --from=publish /out .
 EXPOSE 8080
+USER $APP_UID
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl --fail --silent --max-time 2 http://localhost:8080/health || exit 1
 ENTRYPOINT ["dotnet", "GeoRetrievo.Proxy.dll"]

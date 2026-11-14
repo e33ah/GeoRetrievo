@@ -32,7 +32,7 @@ proxies those requests to the local API. To change the target, create
 `.env.development.local` in this directory:
 
 ```dotenv
-VITE_API_BASE_URL=http://localhost:5294
+set VITE_API_BASE_URL=http://localhost:5294
 ```
 
 Files ending in `.local` are ignored by Git. Production builds do not contain
@@ -57,15 +57,20 @@ ASP.NET Core UI proxy. It is designed to run on Cloud Run, where the proxy uses
 the attached UI service account to obtain an ID token for the private API.
 
 ```powershell
-docker build `
-  -f .\GeoRetrievo.Proxy\Dockerfile `
-  -t georetrievo-ui:local `
-  .
+docker build -f .\GeoRetrievo.Proxy\Dockerfile -t georetrievo-ui:local .
 ```
 
-The container requires `Api__BaseUrl` and Cloud Run metadata credentials at
-runtime; local UI development should use Vite's proxy instead of running this
-container directly.
+Run the container, replacing the example URL with the private API's Cloud Run
+URL:
+
+```powershell
+docker run --rm -p 8080:8080 -e PORT=8080 -e Api__BaseUrl=https://your-api-service-url georetrievo-ui:local
+```
+
+The container serves the UI locally at [http://localhost:8080](http://localhost:8080).
+Forwarding API requests requires Cloud Run metadata credentials, which are only
+available when the proxy runs on Cloud Run. For local UI development with API
+forwarding, use Vite's proxy as described above.
 
 ## API integration
 
