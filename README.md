@@ -32,7 +32,12 @@ workflows, and a reproducible end‑to‑end deployment pipeline.
 - .NET 10 SDK
 - Node.js 22 and npm
 - Docker Desktop, only for the container workflow
-- Fallout , only for CI/CD and local builds
+
+Optional tools for development and CI/CD:
+- Fallout, only for CI/CD and local builds
+- Trivy CLI, only for local source and container scans
+
+### Development
 
 Start the API from the repository root:
 
@@ -58,23 +63,6 @@ dotnet run --project GeoRetrievo.Proxy.Test\GeoRetrievo.Proxy.Test.csproj
 Frontend tests, linting, and production builds are documented in the
 [UI developer guide](GeoRetrievo.UI/README.md#scripts).
 
-## CI/CD
-
-Fallout orchestrates the build pipeline. GitHub Actions runs backend and UI
-builds and tests on pushes and pull requests; a separate workflow deploys the
-API and UI containers to Cloud Run.
-
-CI builds are triggered on pushes to the `main` branch and on pull requests.
-They can also be run locally:
-```sh
-./build.sh GeoRetrievoCI
-```
-
-Application releases are manually triggered and deploy the API and UI images
-to separate Google Cloud Run services. See the
-[infrastructure guide](_Dependencies/infrastructure/terraform/README.md#automated-release)
-for deployment requirements and steps.
-
 ## Run the API container locally
 
 The API container can run locally without Google Cloud authentication. From
@@ -95,3 +83,26 @@ local Google Application Default Credentials and reads the configured bucket.
 Authenticate with `gcloud auth application-default login` first. See the
 [infrastructure guide](_Dependencies/infrastructure/terraform/README.md) for
 cloud deployment.
+
+## CI/CD
+
+Fallout orchestrates the build pipeline. GitHub Actions runs backend and UI
+builds and tests on pushes and pull requests, then scans the source tree and
+container images with Trivy OSS, failing on HIGH or CRITICAL vulnerabilities.
+A separate workflow deploys the API and UI containers to Cloud Run.
+
+CI builds are triggered on pushes to the `main` branch and on pull requests.
+They can also be run locally:
+```sh
+./build.sh GeoRetrievoCI
+```
+
+The `OssScan` target can be run after restore with `./build.sh OssScan`; it
+scans the source tree for HIGH and CRITICAL vulnerabilities. `DockerScan`
+builds both container images and scans them with Trivy; run it with
+`./build.sh DockerScan` after installing Docker and the Trivy CLI.
+
+Application releases are manually triggered and deploy the API and UI images
+to separate Google Cloud Run services. See the
+[infrastructure guide](_Dependencies/infrastructure/terraform/README.md#automated-release)
+for deployment requirements and steps.
