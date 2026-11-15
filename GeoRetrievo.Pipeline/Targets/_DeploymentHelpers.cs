@@ -8,7 +8,6 @@ public partial class Build : FalloutBuild {
         string fileName,
         IEnumerable<string> arguments,
         AbsolutePath workingDirectory,
-        bool captureOutput = false,
         bool logStandardOutput = true) {
         var commandArguments = arguments.ToList();
         var startInfo = OperatingSystem.IsWindows()
@@ -19,11 +18,9 @@ public partial class Build : FalloutBuild {
                     WorkingDirectory = workingDirectory.ToString(),
                 };
 
-        if (captureOutput) {
-            startInfo.RedirectStandardOutput = true;
-            startInfo.RedirectStandardError = true;
-            startInfo.CreateNoWindow = true;
-        }
+        startInfo.RedirectStandardOutput = true;
+        startInfo.RedirectStandardError = true;
+        startInfo.CreateNoWindow = true;
 
         if (!OperatingSystem.IsWindows()
             || !string.Equals(fileName, "gcloud", StringComparison.OrdinalIgnoreCase)) {
@@ -36,23 +33,19 @@ public partial class Build : FalloutBuild {
             ?? throw new InvalidOperationException($"Could not start '{fileName}'.");
 
         Log.Information("Started command {Command}", FormatCommand(fileName, commandArguments));
-        if (captureOutput) {
-            var standardOutputTask = ForwardOutputAsync(
-                process.StandardOutput,
-                line => {
-                    if (logStandardOutput) {
-                        Log.Information("[{Process}] {Output}", fileName, line);
-                    }
-                });
-            var standardErrorTask = ForwardOutputAsync(
-                process.StandardError,
-                line => Log.Information("[{Process} stderr] {Output}", fileName, line));
-            Task.WhenAll(process.WaitForExitAsync(), standardOutputTask, standardErrorTask)
-                .GetAwaiter()
-                .GetResult();
-        } else {
-            process.WaitForExit();
-        }
+        var standardOutputTask = ForwardOutputAsync(
+            process.StandardOutput,
+            line => {
+                if (logStandardOutput) {
+                    Log.Information("[{Process}] {Output}", fileName, line);
+                }
+            });
+        var standardErrorTask = ForwardOutputAsync(
+            process.StandardError,
+            line => Log.Information("[{Process} stderr] {Output}", fileName, line));
+        Task.WhenAll(process.WaitForExitAsync(), standardOutputTask, standardErrorTask)
+            .GetAwaiter()
+            .GetResult();
 
         if (process.ExitCode != 0) {
             Log.Error(
