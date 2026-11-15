@@ -7,7 +7,7 @@ view. For the full-stack local setup, start with the repository
 
 ## Requirements
 
-- Node.js 22 and npm
+- Node.js 24 and npm
 - .NET 11 SDK to run the local API
 
 ## Develop

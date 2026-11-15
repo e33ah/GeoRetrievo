@@ -31,7 +31,7 @@ workflows, and a reproducible end‑to‑end deployment pipeline.
 
 - .NET 11 SDK
 - .NET 11 runtime, to run the API and UI host/proxy
-- Node.js 22 and npm
+- Node.js 24 and npm
 - Docker Desktop, only for the container workflow
 
 Optional tools for development and CI/CD:
