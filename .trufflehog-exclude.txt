@@ -1,5 +1,5 @@
-(^|/)\.git/
-(^|/)bin/
-(^|/)obj/
-(^|/)node_modules/
-(^|/)GeoRetrievo\.UI/public/favicon\.svg$
+(^|[\\/])\.git([\\/]|$)
+(^|[\\/])bin([\\/]|$)
+(^|[\\/])obj([\\/]|$)
+(^|[\\/])node_modules([\\/]|$)
+(^|[\\/])GeoRetrievo\.UI[\\/]public[\\/]favicon\.svg$
