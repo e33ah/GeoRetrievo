@@ -29,6 +29,9 @@ public partial class Build : FalloutBuild {
     [Parameter("Container image tag; defaults to GITHUB_SHA or the current Git commit")]
     readonly string ImageTag = Environment.GetEnvironmentVariable("GITHUB_SHA") ?? string.Empty;
 
+    [Parameter("Base commit for the TruffleHog secret scan")]
+    readonly string SecretScanBaseCommit = GetSecretScanBaseCommitFromEnvironment();
+
     [Parameter("Local Docker image name and tag")]
     readonly string LocalApiImage = "georetrievo-api:local";
 

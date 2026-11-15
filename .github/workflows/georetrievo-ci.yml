@@ -24,6 +24,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
 
       - name: 'Cache: .fallout/temp, ~/.nuget/packages'
         uses: actions/cache@v6
@@ -43,6 +45,14 @@ jobs:
         with:
           path: ./.trivy
 
+      - name: 'Setup: TruffleHog'
+        shell: pwsh
+        run: |
+          $archivePath = Join-Path $env:RUNNER_TEMP 'trufflehog.tar.gz'
+          Invoke-WebRequest -Uri 'https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.9/trufflehog_3.99.9_windows_amd64.tar.gz' -OutFile $archivePath
+          tar -xzf $archivePath -C $env:RUNNER_TEMP
+          Add-Content -Path $env:GITHUB_PATH -Value $env:RUNNER_TEMP
+
       - name: 'Run: BuildSolution'
         run: ./build.ps1 BuildSolution
 
@@ -57,6 +67,11 @@ jobs:
 
       - name: 'Run: OssScan'
         run: ./build.ps1 OssScan
+
+      - name: 'Run: SecretScan'
+        env:
+          TRUFFLEHOG_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: ./build.ps1 SecretScan
 
   build-docker-image:
     name: build-docker-image

@@ -1,0 +1,2 @@
+(^|/)node_modules/
+(^|/)GeoRetrievo\.UI/public/favicon\.svg$
