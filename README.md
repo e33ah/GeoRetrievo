@@ -19,9 +19,9 @@ workflows, and a reproducible end‑to‑end deployment pipeline.
 
 | Area | Technology |
 | --- | --- |
-| API           | .NET 10, ASP.NET Core minimal APIs |
+| API           | .NET 11, ASP.NET Core minimal APIs |
 | Web client    | React 19, TypeScript, Vite |
-| UI host/proxy | .NET 10, ASP.NET Core |
+| UI host/proxy | .NET 11, ASP.NET Core |
 | Data          | Country catalogue in JSON; local file for development or Cloud Storage |
 | Deployment    | Fallout, Docker, Google Cloud Run, Artifact Registry, Terraform |
 
@@ -29,7 +29,8 @@ workflows, and a reproducible end‑to‑end deployment pipeline.
 
 ### Requirements
 
-- .NET 10 SDK
+- .NET 11 SDK
+- .NET 11 runtime, to run the API and UI host/proxy
 - Node.js 22 and npm
 - Docker Desktop, only for the container workflow
 
