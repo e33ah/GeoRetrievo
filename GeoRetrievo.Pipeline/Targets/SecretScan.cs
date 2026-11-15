@@ -8,7 +8,7 @@ public partial class Build : FalloutBuild {
                 "filesystem",
                 ".",
                 "--exclude-paths",
-                ".trufflehog-exclude.txt",
+                "./GeoRetrievo.Pipeline/TruffleHog/.trufflehog-exclude.txt",
                 "--no-update",
                 "--fail",
             ];

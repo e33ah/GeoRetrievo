@@ -4,3 +4,4 @@
 (^|[\\/])obj([\\/]|$)
 (^|[\\/])node_modules([\\/]|$)
 (^|[\\/])GeoRetrievo\.UI[\\/]public[\\/]favicon\.svg$
+(^|[\\/])GeoRetrievo\.UI[\\/]dist([\\/]|$)
