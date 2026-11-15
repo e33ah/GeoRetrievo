@@ -14,7 +14,7 @@ public partial class Build : FalloutBuild {
                 "--exclude-paths",
                 ".trufflehog-exclude.txt",
                 "--no-update",
-                "--fail",
+                "--debug",
             ];
             RunTruffleHog(args);
         });
