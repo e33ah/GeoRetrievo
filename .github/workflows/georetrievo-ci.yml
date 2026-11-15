@@ -51,6 +51,9 @@ jobs:
           tar -xzf $archivePath -C $env:RUNNER_TEMP
           Add-Content -Path $env:GITHUB_PATH -Value $env:RUNNER_TEMP
 
+      - name: 'Run: SecretScan'
+        run: ./build.ps1 SecretScan
+
       - name: 'Run: BuildSolution'
         run: ./build.ps1 BuildSolution
 
@@ -65,9 +68,6 @@ jobs:
 
       - name: 'Run: OssScan'
         run: ./build.ps1 OssScan
-
-      - name: 'Run: SecretScan'
-        run: ./build.ps1 SecretScan
 
   build-docker-image:
     name: build-docker-image
