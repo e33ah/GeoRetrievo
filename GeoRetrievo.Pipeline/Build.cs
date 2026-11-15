@@ -9,7 +9,7 @@ namespace GeoRetrievo.Pipeline;
 public partial class Build : FalloutBuild {
     public static int Main() => Execute<Build>(x => x.GeoRetrievoCI);
     public Target GeoRetrievoCI => _ => _
-        .DependsOn(ExecuteUnitTests, ExecuteUnitTestsUi, OssScan, DockerScan, PlanRelease);
+        .DependsOn(ExecuteUnitTests, ExecuteUnitTestsUi, OssScan, DockerScan, SecretScan, PlanRelease);
     public Target GeoRetrievoCD => _ => _
         .DependsOn(ReleaseAPI, ReleaseUI);
 

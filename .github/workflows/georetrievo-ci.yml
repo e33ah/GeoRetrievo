@@ -43,6 +43,17 @@ jobs:
         with:
           path: ./.trivy
 
+      - name: 'Setup: TruffleHog'
+        shell: pwsh
+        run: |
+          $archivePath = Join-Path $env:RUNNER_TEMP 'trufflehog.tar.gz'
+          Invoke-WebRequest -Uri 'https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.9/trufflehog_3.99.9_windows_amd64.tar.gz' -OutFile $archivePath
+          tar -xzf $archivePath -C $env:RUNNER_TEMP
+          Add-Content -Path $env:GITHUB_PATH -Value $env:RUNNER_TEMP
+
+      - name: 'Run: SecretScan'
+        run: ./build.ps1 SecretScan
+
       - name: 'Run: BuildSolution'
         run: ./build.ps1 BuildSolution
 

@@ -1,10 +1,15 @@
+using System.IO;
+using System.Threading.Tasks;
+
 namespace GeoRetrievo.Pipeline;
 
 public partial class Build : FalloutBuild {
     private static void RunCommand(
         string fileName,
         IEnumerable<string> arguments,
-        AbsolutePath workingDirectory) {
+        AbsolutePath workingDirectory,
+        bool captureOutput = false,
+        bool logStandardOutput = true) {
         var commandArguments = arguments.ToList();
         var startInfo = OperatingSystem.IsWindows()
             && string.Equals(fileName, "gcloud", StringComparison.OrdinalIgnoreCase)
@@ -13,6 +18,12 @@ public partial class Build : FalloutBuild {
                     UseShellExecute = false,
                     WorkingDirectory = workingDirectory.ToString(),
                 };
+
+        if (captureOutput) {
+            startInfo.RedirectStandardOutput = true;
+            startInfo.RedirectStandardError = true;
+            startInfo.CreateNoWindow = true;
+        }
 
         if (!OperatingSystem.IsWindows()
             || !string.Equals(fileName, "gcloud", StringComparison.OrdinalIgnoreCase)) {
@@ -25,7 +36,24 @@ public partial class Build : FalloutBuild {
             ?? throw new InvalidOperationException($"Could not start '{fileName}'.");
 
         Log.Information("Started command {Command}", FormatCommand(fileName, commandArguments));
-        process.WaitForExit();
+        if (captureOutput) {
+            var standardOutputTask = ForwardOutputAsync(
+                process.StandardOutput,
+                line => {
+                    if (logStandardOutput) {
+                        Log.Information("[{Process}] {Output}", fileName, line);
+                    }
+                });
+            var standardErrorTask = ForwardOutputAsync(
+                process.StandardError,
+                line => Log.Information("[{Process} stderr] {Output}", fileName, line));
+            Task.WhenAll(process.WaitForExitAsync(), standardOutputTask, standardErrorTask)
+                .GetAwaiter()
+                .GetResult();
+        } else {
+            process.WaitForExit();
+        }
+
         if (process.ExitCode != 0) {
             Log.Error(
                 "Command {Command} failed with exit code {ExitCode}",
@@ -36,6 +64,12 @@ public partial class Build : FalloutBuild {
         }
 
         Log.Information("Command {Command} completed successfully", FormatCommand(fileName, commandArguments));
+    }
+
+    private static async Task ForwardOutputAsync(StreamReader reader, Action<string> logLine) {
+        while (await reader.ReadLineAsync() is { } line) {
+            logLine(line);
+        }
     }
 
     private static ProcessStartInfo CreateWindowsGCloudStartInfo(
