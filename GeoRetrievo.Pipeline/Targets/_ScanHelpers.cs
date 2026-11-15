@@ -19,9 +19,4 @@ public partial class Build : FalloutBuild {
                 exception);
         }
     }
-    private static string GetSecretScanBaseCommitFromEnvironment() {
-        string baseCommit = Environment.GetEnvironmentVariable("TRUFFLEHOG_BASE");
-        const string PREVIOUS_COMMIT_REF = "HEAD~1";
-        return string.IsNullOrWhiteSpace(baseCommit) || baseCommit.All(character => character == '0') ? PREVIOUS_COMMIT_REF : baseCommit;
-    }
 }
