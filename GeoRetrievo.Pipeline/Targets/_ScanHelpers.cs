@@ -13,11 +13,9 @@ public partial class Build : FalloutBuild {
     private void RunTruffleHog(IEnumerable<string> arguments) {
         try {
             // Findings may contain secret values, so only forward TruffleHog's diagnostic stderr.
-            RunCommand("trufflehog", arguments, RootDirectory, logStandardOutput: false);
+            RunCommand("trufflehog", arguments, RootDirectory, captureOutput: true, logStandardOutput: false);
         } catch (Win32Exception exception) {
-            throw new InvalidOperationException(
-                "Could not start TruffleHog. Install the TruffleHog CLI and ensure 'trufflehog' is available on PATH.",
-                exception);
+            throw new InvalidOperationException("Could not start TruffleHog. Install the TruffleHog CLI and ensure 'trufflehog' is available on PATH.", exception);
         }
     }
 }
